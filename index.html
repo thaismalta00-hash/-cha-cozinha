@@ -326,20 +326,14 @@
             { id: 60, nome: "Fundo de Ajuda para o Enxoval", preco: 250.00, comprado: false }
         ];
 
-            function iniciarVitrine() {
-        const containerPrincipal = document.getElementById('vitrine-principal');
-        containerPrincipal.innerHTML = '';
-
-        for (const categoria in dadosPresentes) {
-            const titulo = document.createElement('h2');
-            titulo.className = 'categoria-titulo';
-            titulo.innerText = categoria;
-            containerPrincipal.appendChild(titulo);
+function iniciarVitrine() {
+            const containerPrincipal = document.getElementById('vitrine-principal');
+            containerPrincipal.innerHTML = '';
 
             const grid = document.createElement('div');
             grid.className = 'grid-presentes';
 
-            dadosPresentes[categoria].forEach(item => {
+            dadosPresentes.forEach(item => {
                 const card = document.createElement('div');
                 card.className = "card " + (item.comprado ? 'comprado' : '');
                 
@@ -355,7 +349,6 @@
 
             containerPrincipal.appendChild(grid);
         }
-    }
 
     function abrirFluxoCompra(id, nome, preco) {
         let nomeConvidado = prompt("Você selecionou: " + nome + ".\nDigite seu nome completo para confirmar:");
