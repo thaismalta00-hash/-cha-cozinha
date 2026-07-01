@@ -5,25 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Cozinha - Tata & Pi</title>
     <style>
-        /* Estilo moderno, limpo e focado nos produtos */
+        /* Design Minimalista Preto e Branco */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #212529;
-            margin: 0;
-            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
             text-align: center;
+            line-height: 1.6;
+            padding-bottom: 60px;
         }
+
+        /* Topo do Site */
         header {
             background-color: #ffffff;
-            padding: 50px 20px;
-            border-bottom: 1px solid #dee2e6;
+            padding: 80px 20px 40px 20px;
         }
-        h1 {
+        header h1 {
             font-size: 2.5rem;
-            margin: 0 0 10px 0;
-            color: #343a40;
+            color: #000000;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
         }
+        header p {
+            font-size: 1rem;
+            color: #666666;
+            max-width: 500px;
+            margin: 0 auto;
+            letter-spacing: 0.5px;
+        }
+
+        /* Container dos Presentes */
         .container {
             max-width: 1000px;
             margin: 40px auto;
@@ -32,51 +46,88 @@
         .grid-presentes {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
+
+        /* Cards em Preto e Branco */
         .card {
             background: #ffffff;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            border: 1px solid #edf2f7;
-            text-align: left;
+            border: 1px solid #e5e5e5;
             display: flex;
             flex-direction: column;
+            text-align: left;
+            transition: border-color 0.2s;
+        }
+        .card:hover {
+            border-color: #000000;
+        }
+        .card-img-container {
+            width: 100%;
+            height: 240px;
+            background-color: #fafafb;
+            overflow: hidden;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Aplica efeito preto e branco nas imagens */
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        .card:hover img {
+            filter: grayscale(0%); /* Mostra cor ao passar o mouse, opcional */
+        }
+        .card-conteudo {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
             justify-content: space-between;
         }
         .card h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.3rem;
-            color: #2d3748;
+            font-size: 1.1rem;
+            color: #000000;
+            margin-bottom: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .card .preco {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2b6cb0; /* Azul moderno para o preço */
-            margin-bottom: 20px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 24px;
         }
+
+        /* Botões Sólidos Minimalistas */
         .btn-comprar {
-            background-color: #3182ce;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 1rem;
-            border-radius: 8px;
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #000000;
+            padding: 16px 20px;
+            font-size: 0.85rem;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             width: 100%;
-            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: background 0.2s, color 0.2s;
         }
         .btn-comprar:hover {
-            background-color: #2b6cb0;
+            background-color: #ffffff;
+            color: #000000;
         }
-        /* Estilo para quando o item for comprado */
+
+        /* Items Esgotados */
         .card.comprado {
-            opacity: 0.6;
+            opacity: 0.4;
         }
         .card.comprado .btn-comprar {
-            background-color: #a0aec0 !important;
+            background-color: #ffffff !important;
+            color: #999999 !important;
+            border-color: #e5e5e5 !important;
             cursor: not-allowed;
         }
     </style>
@@ -84,24 +135,23 @@
 <body>
 
     <header>
-        <h1>Chá de Cozinha — Tata & Pi</h1>
-        <p>Escolha um presente abaixo para nos ajudar a montar nossa cozinha!</p>
+        <h1>Tata & Pi</h1>
+        <p>Escolha um dos itens abaixo para nos presentear através de nossa chave PIX direta.</p>
     </header>
 
     <div class="container">
         <div class="grid-presentes" id="vitrine">
-            
-            <!-- Os cards de presentes serão gerados dinamicamente pelo JavaScript aqui -->
-            
+            <!-- Os cards serão criados aqui pelo script -->
         </div>
     </div>
 
     <script>
-        // Lista provisória de presentes (depois virá direto do Supabase)
+        // Lista de presentes base com links de imagens limpas e elegantes
         const presentesIniciais = [
-            { id: 1, nome: "Colher de Pau", preco: 10.00, comprado: false },
-            { id: 2, nome: "Jogo de Xícaras", preco: 30.00, comprado: false },
-            { id: 3, nome: "Conjunto de Panelas", preco: 150.00, comprado: true } // Um de teste já esgotado
+            { id: 1, nome: "Colher de Pau do Amor", preco: 10.00, comprado: false, img: "https://unsplash.com" },
+            { id: 2, nome: "Jogo de Xícaras Moderno", preco: 30.00, comprado: false, img: "https://unsplash.com" },
+            { id: 3, nome: "Conjunto de Panelas Black", preco: 150.00, comprado: false, img: "https://unsplash.com" },
+            { id: 4, nome: "Batedeira Orbital", preco: 250.00, comprado: false, img: "https://unsplash.com" }
         ];
 
         function renderizarPresentes(lista) {
@@ -113,28 +163,31 @@
                 card.className = `card ${item.comprado ? 'comprado' : ''}`;
                 
                 card.innerHTML = `
-                    <div>
-                        <h3>${item.nome}</h3>
-                        <div class="preco">R$ ${item.preco.toFixed(2)}</div>
+                    <div class="card-img-container">
+                        <img src="${item.img}" alt="${item.nome}">
                     </div>
-                    <button class="btn-comprar" ${item.comprado ? 'disabled' : ''} onclick="clicouComprar(${item.id}, '${item.nome}', ${item.preco})">
-                        ${item.comprado ? 'Esgotado' : 'Presentear'}
-                    </button>
+                    <div class="card-conteudo">
+                        <div>
+                            <h3>${item.nome}</h3>
+                            <div class="preco">R$ ${item.preco.toFixed(2)}</div>
+                        </div>
+                        <button class="btn-comprar" ${item.comprado ? 'disabled' : ''} onclick="clicouComprar(${item.id}, '${item.nome}', ${item.preco})">
+                            ${item.comprado ? 'Esgotado' : 'Presentear'}
+                        </button>
+                    </div>
                 `;
                 vitrine.appendChild(card);
             });
         }
 
         function clicouComprar(id, nome, preco) {
-            let nomeConvidado = prompt(`Você escolheu: ${nome}.\nDigite seu nome para reservar este item:`);
+            let nomeConvidado = prompt(`Você selecionou: ${nome}.\nPor favor, digite seu nome completo para confirmação:`);
             
             if (nomeConvidado && nomeConvidado.trim() !== "") {
-                alert(`Obrigado, ${nomeConvidado}!\n\nAgora faça o PIX de R$ ${preco.toFixed(2)} para finalizar.\n(Próximo passo: salvar isso no Supabase)`);
-                // Aqui faremos a chamada do banco de dados no próximo passo
+                alert(`Obrigado, ${nomeConvidado}!\n\nAgora realize a transferência PIX de R$ ${preco.toFixed(2)}.\n\nChave PIX: 11976861312`);
             }
         }
 
-        // Executa a renderização ao carregar a página
         renderizarPresentes(presentesIniciais);
     </script>
 
