@@ -250,8 +250,8 @@
                 { id: 36, nome: "Galheteiro de Azeite e Vinagre", preco: 45.00, comprado: false },
                 { id: 37, nome: "Moedor Duplo de Sal e Pimenta", preco: 55.00, comprado: false },
                 { id: 38, nome: "Suporte Rolo Papel Toalha Black", preco: 35.00, comprado: false },
-                            { id: 39, nome: "Amassador de Batatas em Inox", preco: 25.00, comprado: false },
-            { id: 40, nome: "Petisqueira Redonda de Bambu", preco: 50.00, comprado: false }
+                { id: 39, nome: "Amassador de Batatas em Inox", preco: 25.00, comprado: false }, 
+                { id: 40, nome: "Petisqueira Redonda de Bambu", preco: 50.00, comprado: false }
         ],
         "Panelas e Assadeiras": [
             { id: 41, nome: "Frigideira Antiaderente Pequena", preco: 55.00, comprado: false },
@@ -278,7 +278,7 @@
             { id: 60, nome: "Fundo de Ajuda para o Enxoval", preco: 250.00, comprado: false }
         ]
     };
-    function iniciarVitrine() {
+        function iniciarVitrine() {
         const containerPrincipal = document.getElementById('vitrine-principal');
         containerPrincipal.innerHTML = '';
 
@@ -295,13 +295,20 @@
                 const card = document.createElement('div');
                 card.className = "card " + (item.comprado ? 'comprado' : '');
                 
-                card.innerHTML = '<div class="card-conteudo"><div><h3>' + item.nome + '</h3><div class="preco">R$ ' + item.preco.toFixed(2) + '</div></div><button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' onclick="abrirFluxoCompra(' + item.id + ', \'' + item.nome + '\', ' + item.preco + ')">' + (item.comprado ? 'Esgotado' : 'Presentear') + '</button></div>';
+                let html = '<div class="card-conteudo"><div><h3>' + item.nome + '</h3>';
+                html += '<div class="preco">R$ ' + item.preco.toFixed(2) + '</div></div>';
+                html += '<button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' ';
+                html += 'onclick="abrirFluxoCompra(' + item.id + ', \'' + item.nome + '\', ' + item.preco + ')">';
+                html += (item.comprado ? 'Esgotado' : 'Presentear') + '</button></div>';
+                
+                card.innerHTML = html;
                 grid.appendChild(card);
             });
 
             containerPrincipal.appendChild(grid);
         }
     }
+
     function abrirFluxoCompra(id, nome, preco) {
         let nomeConvidado = prompt("Você selecionou: " + nome + ".\nDigite seu nome completo para confirmar:");
         
