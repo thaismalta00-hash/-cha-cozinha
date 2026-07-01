@@ -250,4 +250,80 @@
                 { id: 36, nome: "Galheteiro de Azeite e Vinagre", preco: 45.00, comprado: false },
                 { id: 37, nome: "Moedor Duplo de Sal e Pimenta", preco: 55.00, comprado: false },
                 { id: 38, nome: "Suporte Rolo Papel Toalha Black", preco: 35.00, comprado: false },
-                { id: 39, nome: "Amassador de Batatas em Inox", preco: 25.00, comprado: false },{ id: 40, nome: "Petisqueira Redonda de Bambu", preco: 50.00, comprado: false }],"Panelas e Assadeiras": [{ id: 41, nome: "Frigideira Antiaderente Pequena", preco: 55.00, comprado: false },{ id: 42, nome: "Forma de Bolo Fundo Removivel", preco: 40.00, comprado: false },{ id: 43, nome: "Assadeira Retangular Vidro Grande", preco: 65.00, comprado: false },{ id: 44, nome: "Forma de Muffins Silicone", preco: 35.00, comprado: false },{ id: 45, nome: "Panela de Pressao Segura 4.5L", preco: 140.00, comprado: false },{ id: 46, nome: "Fervedor Leiteira Antiaderente Black", preco: 45.00, comprado: false },{ id: 47, nome: "Cuscuzeira Pequena Nordestina", preco: 50.00, comprado: false },{ id: 48, nome: "Forma de Pizza Antiaderente", preco: 30.00, comprado: false },{ id: 49, nome: "Assadeira para Grelhar Vegetais", preco: 70.00, comprado: false },{ id: 50, nome: "Wok Antiaderente com Tampa Vidro", preco: 130.00, comprado: false }],"Eletros e Utilidades Modernas": [{ id: 51, nome: "Balanca Digital de Cozinha", preco: 30.00, comprado: false },{ id: 52, nome: "Timer de Cozinha Minimalista", preco: 25.00, comprado: false },{ id: 53, nome: "Sanduicheira e Grill Black Fast", preco: 95.00, comprado: false },{ id: 54, nome: "Liquidificador Potente Black 110V", preco: 150.00, comprado: false },{ id: 55, nome: "Chaleira Eletrica Inox Pratica", preco: 110.00, comprado: false },{ id: 56, nome: "Mixer de Mao 3 em 1 Multiuso", preco: 140.00, comprado: false },{ id: 57, nome: "Manteigueira Francesa de Ceramica", preco: 50.00, comprado: false },{ id: 58, nome: "Lixeira com Sensor para Pia Black", preco: 85.00, comprado: false },{ id: 59, nome: "Mini Processador Eletrico", preco: 60.00, comprado: false },{ id: 60, nome: "Fundo de Ajuda para o Enxoval", preco: 250.00, comprado: false }]};function iniciarVitrine() {const containerPrincipal = document.getElementById('vitrine-principal');containerPrincipal.innerHTML = '';for (const categoria in dadosPresentes) {const titulo = document.createElement('h2');titulo.className = 'categoria-titulo';titulo.innerText = categoria;containerPrincipal.appendChild(titulo);const grid = document.createElement('div');grid.className = 'grid-presentes';dadosPresentes[categoria].forEach(item => {const card = document.createElement('div');card.className = "card " + (item.comprado ? 'comprado' : '');card.innerHTML = '' + item.nome + 'R$ ' + item.preco.toFixed(2) + '<button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' onclick="abrirFluxoCompra(' + item.id + ', '' + item.nome + '', ' + item.preco + ')">' + (item.comprado ? 'Esgotado' : 'Presentear') + '';grid.appendChild(card);});containerPrincipal.appendChild(grid);}}function abrirFluxoCompra(id, nome, preco) {let nomeConvidado = prompt("Você selecionou: " + nome + ".\nDigite seu nome completo para confirmar:");if (nomeConvidado && nomeConvidado.trim() !== "") {document.getElementById('modalMsg').innerHTML = "Obrigado, " + nomeConvidado + "!Para concluir o presente, clique abaixo para copiar a nossa chave e faça o pagamento de R$ " + preco.toFixed(2) + " no seu banco.";document.getElementById('pixModal').style.display = 'flex';}}function fecharModal() {document.getElementById('pixModal').style.display = 'none';}function copiarPix() {navigator.clipboard.writeText(chavePixReal).then(() => {alert("Chave PIX copiada com sucesso! Agora é só colar no aplicativo do seu banco.");}).catch(err => {alert("Erro ao copiar. A chave é: " + chavePixReal);});}iniciarVitrine();
+                            { id: 39, nome: "Amassador de Batatas em Inox", preco: 25.00, comprado: false },
+            { id: 40, nome: "Petisqueira Redonda de Bambu", preco: 50.00, comprado: false }
+        ],
+        "Panelas e Assadeiras": [
+            { id: 41, nome: "Frigideira Antiaderente Pequena", preco: 55.00, comprado: false },
+            { id: 42, nome: "Forma de Bolo Fundo Removivel", preco: 40.00, comprado: false },
+            { id: 43, nome: "Assadeira Retangular Vidro Grande", preco: 65.00, comprado: false },
+            { id: 44, nome: "Forma de Muffins Silicone", preco: 35.00, comprado: false },
+            { id: 45, nome: "Panela de Pressao Segura 4.5L", preco: 140.00, comprado: false },
+            { id: 46, nome: "Fervedor Leiteira Antiaderente Black", preco: 45.00, comprado: false },
+            { id: 47, nome: "Cuscuzeira Pequena Nordestina", preco: 50.00, comprado: false },
+            { id: 48, nome: "Forma de Pizza Antiaderente", preco: 30.00, comprado: false },
+            { id: 49, nome: "Assadeira para Grelhar Vegetais", preco: 70.00, comprado: false },
+            { id: 50, nome: "Wok Antiaderente com Tampa Vidro", preco: 130.00, comprado: false }
+        ],
+        "Eletros e Utilidades Modernas": [
+            { id: 51, nome: "Balanca Digital de Cozinha", preco: 30.00, comprado: false },
+            { id: 52, nome: "Timer de Cozinha Minimalista", preco: 25.00, comprado: false },
+            { id: 53, nome: "Sanduicheira e Grill Black Fast", preco: 95.00, comprado: false },
+            { id: 54, nome: "Liquidificador Potente Black 110V", preco: 150.00, comprado: false },
+            { id: 55, nome: "Chaleira Eletrica Inox Pratica", preco: 110.00, comprado: false },
+            { id: 56, nome: "Mixer de Mao 3 em 1 Multiuso", preco: 140.00, comprado: false },
+            { id: 57, nome: "Manteigueira Francesa de Ceramica", preco: 50.00, comprado: false },
+            { id: 58, nome: "Lixeira com Sensor para Pia Black", preco: 85.00, comprado: false },
+            { id: 59, nome: "Mini Processador Eletrico", preco: 60.00, comprado: false },
+            { id: 60, nome: "Fundo de Ajuda para o Enxoval", preco: 250.00, comprado: false }
+        ]
+    };
+    function iniciarVitrine() {
+        const containerPrincipal = document.getElementById('vitrine-principal');
+        containerPrincipal.innerHTML = '';
+
+        for (const categoria in dadosPresentes) {
+            const titulo = document.createElement('h2');
+            titulo.className = 'categoria-titulo';
+            titulo.innerText = categoria;
+            containerPrincipal.appendChild(titulo);
+
+            const grid = document.createElement('div');
+            grid.className = 'grid-presentes';
+
+            dadosPresentes[categoria].forEach(item => {
+                const card = document.createElement('div');
+                card.className = "card " + (item.comprado ? 'comprado' : '');
+                
+                card.innerHTML = '<div class="card-conteudo"><div><h3>' + item.nome + '</h3><div class="preco">R$ ' + item.preco.toFixed(2) + '</div></div><button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' onclick="abrirFluxoCompra(' + item.id + ', \'' + item.nome + '\', ' + item.preco + ')">' + (item.comprado ? 'Esgotado' : 'Presentear') + '</button></div>';
+                grid.appendChild(card);
+            });
+
+            containerPrincipal.appendChild(grid);
+        }
+    }
+    function abrirFluxoCompra(id, nome, preco) {
+        let nomeConvidado = prompt("Você selecionou: " + nome + ".\nDigite seu nome completo para confirmar:");
+        
+        if (nomeConvidado && nomeConvidado.trim() !== "") {
+            document.getElementById('modalMsg').innerHTML = "Obrigado, <b>" + nomeConvidado + "</b>!<br>Para concluir o presente, clique abaixo para copiar a nossa chave e faça o pagamento de <b>R$ " + preco.toFixed(2) + "</b> no seu banco.";
+            document.getElementById('pixModal').style.display = 'flex';
+        }
+    }
+
+    function fecharModal() {
+        document.getElementById('pixModal').style.display = 'none';
+    }
+
+    function copiarPix() {
+        navigator.clipboard.writeText(chavePixReal).then(() => {
+            alert("Chave PIX copiada com sucesso! Agora é só colar no aplicativo do seu banco.");
+        }).catch(err => {
+            alert("Erro ao copiar. A chave é: " + chavePixReal);
+        });
+    }
+
+    iniciarVitrine();
+</script>
+</body>
+</html>
