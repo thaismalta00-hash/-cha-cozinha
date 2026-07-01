@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chá de Cozinha - Tata & Pi</title>
+    <title>Chá de Cozinha - Thais & Felipe</title>
+    <!-- Importando as fontes elegantes idênticas ao design -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
     <style>
         /* Design Minimalista Preto e Branco */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,27 +20,78 @@
             padding-bottom: 60px;
         }
 
+        /* Topo com o Arco Idêntico ao Canva */
         header {
-            padding: 80px 20px 40px 20px;
+            padding: 60px 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
+        
+        .arco-container {
+            background-color: #000000;
+            color: #ffffff;
+            width: 100%;
+            max-width: 450px; /* Tamanho proporcional do arco */
+            height: 550px;
+            border-top-left-radius: 250px; /* Faz o formato do arco perfeito */
+            border-top-right-radius: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .arco-container h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
+            letter-spacing: 4px;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
-        header p {
+
+        .arco-container .e-comercial {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+
+        .arco-container h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        .arco-container p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.2rem;
+            color: #ffffff;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Texto de instrução abaixo do arco */
+        .instrucao-texto {
             font-size: 1rem;
             color: #666666;
             max-width: 500px;
-            margin: 0 auto;
+            margin: 40px auto 20px auto;
             letter-spacing: 0.5px;
+            padding: 0 20px;
         }
 
         .container {
             max-width: 1000px;
-            margin: 40px auto;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
@@ -45,7 +100,7 @@
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin: 50px 0 25px 0;
+            margin: 60px 0 25px 0;
             text-align: left;
             border-bottom: 1px solid #000000;
             padding-bottom: 8px;
@@ -182,8 +237,13 @@
 <body>
 
     <header>
-        <h1>Tata & Pi</h1>
-        <p>Escolha um presente abaixo e utilize o recurso de cópia rápida para realizar o PIX direto.</p>
+        <div class="arco-container">
+            <h1>Thais</h1>
+            <div class="e-comercial">&</div>
+            <h2>Felipe</h2>
+            <p>Chá de Cozinha</p>
+        </div>
+        <p class="instrucao-texto">Escolha um presente abaixo e utilize o recurso de cópia rápida para realizar o PIX direto.</p>
     </header>
 
     <div class="container" id="vitrine-principal">
