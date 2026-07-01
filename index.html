@@ -3,76 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chá de Cozinha | Thais & Felipe</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <title>Chá de Cozinha - Tata & Pi</title>
+    <style>
+        /* Estilo moderno, limpo e focado nos produtos */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #ffffff;
+            padding: 50px 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            color: #343a40;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .grid-presentes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f7;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.3rem;
+            color: #2d3748;
+        }
+        .card .preco {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2b6cb0; /* Azul moderno para o preço */
+            margin-bottom: 20px;
+        }
+        .btn-comprar {
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .btn-comprar:hover {
+            background-color: #2b6cb0;
+        }
+        /* Estilo para quando o item for comprado */
+        .card.comprado {
+            opacity: 0.6;
+        }
+        .card.comprado .btn-comprar {
+            background-color: #a0aec0 !important;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
-<header>
-    <nav class="menu">
-        <div class="logo">
-            T | F
-        </div>
-        <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#evento">Evento</a></li>
-            <li><a href="#presentes">Presentes</a></li>
-        </ul>
-    </nav>
-</header>
-<section id="inicio" class="hero">
-    <div class="hero-content">
-        <h1>Chá de Cozinha</h1>
-        <h2>Thais & Felipe</h2>
-        <p>
-            Estamos preparando nosso novo lar com muito amor.
-            Sua presença já será um presente, mas caso deseje
-            nos presentear, preparamos uma lista especial.
-        </p>
-        <a href="#presentes" class="botao">
-            Ver Lista de Presentes
-        </a>
-    </div>
-</section>
-<section id="evento" class="evento">
-    <h2>Informações</h2>
-    <div class="card">
-        <p><strong>Data</strong></p>
-        <span>Em breve</span>
-    </div>
-    <div class="card">
-        <p><strong>Horário</strong></p>
-        <span>Em breve</span>
-    </div>
-    <div class="card">
-        <p><strong>Local</strong></p>
-        <span>Em breve</span>
-    </div>
-</section>
-<section id="presentes" class="presentes">
-    <h2>Lista de Presentes</h2>
-    <div class="grid">
-        <div class="presente">
-            <h3>Jogo de Panelas</h3>
-            <p>Essencial para começarmos nossa cozinha.</p>
-            <button>Presentear</button>
-        </div>
-        <div class="presente">
-            <h3>Air Fryer</h3>
-            <p>Para preparar muitas receitas deliciosas.</p>
-            <button>Presentear</button>
-        </div>
-        <div class="presente">
-            <h3>Kit de Taças</h3>
-            <p>Para brindar os novos momentos da nossa vida.</p>
-            <button>Presentear</button>
+
+    <header>
+        <h1>Chá de Cozinha — Tata & Pi</h1>
+        <p>Escolha um presente abaixo para nos ajudar a montar nossa cozinha!</p>
+    </header>
+
+    <div class="container">
+        <div class="grid-presentes" id="vitrine">
+            
+            <!-- Os cards de presentes serão gerados dinamicamente pelo JavaScript aqui -->
+            
         </div>
     </div>
-</section>
-<footer>
-    <p>
-        Feito com carinho por Thais & Felipe ❤️
-    </p>
-</footer>
+
+    <script>
+        // Lista provisória de presentes (depois virá direto do Supabase)
+        const presentesIniciais = [
+            { id: 1, nome: "Colher de Pau", preco: 10.00, comprado: false },
+            { id: 2, nome: "Jogo de Xícaras", preco: 30.00, comprado: false },
+            { id: 3, nome: "Conjunto de Panelas", preco: 150.00, comprado: true } // Um de teste já esgotado
+        ];
+
+        function renderizarPresentes(lista) {
+            const vitrine = document.getElementById('vitrine');
+            vitrine.innerHTML = '';
+
+            lista.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `card ${item.comprado ? 'comprado' : ''}`;
+                
+                card.innerHTML = `
+                    <div>
+                        <h3>${item.nome}</h3>
+                        <div class="preco">R$ ${item.preco.toFixed(2)}</div>
+                    </div>
+                    <button class="btn-comprar" ${item.comprado ? 'disabled' : ''} onclick="clicouComprar(${item.id}, '${item.nome}', ${item.preco})">
+                        ${item.comprado ? 'Esgotado' : 'Presentear'}
+                    </button>
+                `;
+                vitrine.appendChild(card);
+            });
+        }
+
+        function clicouComprar(id, nome, preco) {
+            let nomeConvidado = prompt(`Você escolheu: ${nome}.\nDigite seu nome para reservar este item:`);
+            
+            if (nomeConvidado && nomeConvidado.trim() !== "") {
+                alert(`Obrigado, ${nomeConvidado}!\n\nAgora faça o PIX de R$ ${preco.toFixed(2)} para finalizar.\n(Próximo passo: salvar isso no Supabase)`);
+                // Aqui faremos a chamada do banco de dados no próximo passo
+            }
+        }
+
+        // Executa a renderização ao carregar a página
+        renderizarPresentes(presentesIniciais);
+    </script>
+
 </body>
 </html>
