@@ -289,77 +289,75 @@
             { id: 20, nome: "Livre para nos abençoar com o valor que o seu coração desejar (Valor Livre)", preco: 0.00, comprado: false, img: "porquinho.jpeg" }
         ];
 
-        function iniciarVitrine() {
-            const containerPrincipal = document.getElementById('vitrine-principal');
-            containerPrincipal.innerHTML = '';
+    function iniciarVitrine() {
+        const containerPrincipal = document.getElementById('vitrine-principal');
+        containerPrincipal.innerHTML = '';
 
-            const grid = document.createElement('div');
-            grid.className = 'grid-presentes';
+        const grid = document.createElement('div');
+        grid.className = 'grid-presentes';
 
-            dadosPresentes.forEach(item => {
-                const card = document.createElement('div');
-                card.className = "card " + (item.comprado ? 'comprado' : '');
-                
-                let textoPreco = item.id === 20 ? "Valor Livre" : "R$ " + item.preco.toFixed(2).replace('.', ',');
-
-                // Ajustado: Altura aumentada para 260px, filtro removido e object-fit mudado para contain (não corta)
-                let html = '<div class="card-img-container" style="width: 100%; height: 260px; overflow: hidden; border-bottom: 1px solid #e5e5e5; padding: 10px; background-color: #fafafa;">';
-                html += '<img src="' + item.img + '" style="width: 100%; height: 100%; object-fit: contain;" alt="' + item.nome + '">';
-                html += '</div>';
-                html += '<div class="card-conteudo"><div><h3>' + item.nome + '</h3>';
-                html += '<div class="preco">' + textoPreco + '</div></div>';
-                html += '<button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' ';
-                html += 'onclick="abrirFluxoCompra(' + item.id + ', \'' + item.nome.replace(/'/g, "\\'") + '\', ' + item.preco + ')">';
-                html += (item.comprado ? 'Esgotado' : 'Presentear') + '</button></div>';
-                
-                card.innerHTML = html;
-                grid.appendChild(card);
-            });
-
-            containerPrincipal.appendChild(grid);
-        }
-
-
-        function abrirFluxoCompra(id, nome, preco) {
-            let nomeConvidado = prompt("Você selecionou: " + nome + ".\nDigite seu nome completo para confirmar:");
+        dadosPresentes.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "card " + (item.comprado ? 'comprado' : '');
             
-            if (nomeConvidado && nomeConvidado.trim() !== "") {
-                let valorFinal = preco;
+            let textoPreco = item.id === 20 ? "Valor Livre" : "R$ " + item.preco.toFixed(2).replace('.', ',');
 
-                if (id === 20) {
-                    let valorDigitado = prompt("Digite o valor (em R$) com o qual deseja nos presentear:");
-                    valorFinal = parseFloat(valorDigitado.replace(',', '.'));
-                    
-                    if (isNaN(valorFinal) || valorFinal <= 0) {
-                        alert("Por favor, digite um valor válido para prosseguir.");
-                        return;
-                    }
+            let html = '<div class="card-img-container" style="width: 100%; height: 260px; overflow: hidden; border-bottom: 1px solid #e5e5e5; padding: 10px; background-color: #fafafa;">';
+            html += '<img src="' + item.img + '" style="width: 100%; height: 100%; object-fit: contain;" alt="' + item.nome + '">';
+            html += '</div>';
+            html += '<div class="card-conteudo"><div><h3>' + item.nome + '</h3>';
+            html += '<div class="preco">' + textoPreco + '</div></div>';
+            html += '<button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' ';
+            html += 'onclick="abrirFluxoCompra(' + item.id + ', \'' + item.nome.replace(/'/g, "\\'") + '\', ' + item.preco + ')">';
+            html += (item.comprado ? 'Esgotado' : 'Presentear') + '</button></div>';
+            
+            card.innerHTML = html;
+            grid.appendChild(card);
+        });
+
+        containerPrincipal.appendChild(grid);
+    }
+
+    function abrirFluxoCompra(id, nome, preco) {
+        let nomeConvidado = prompt("Você selecionou: " + nome + ".\nDigite seu nome completo para confirmar:");
+        
+        if (nomeConvidado && nomeConvidado.trim() !== "") {
+            let valorFinal = preco;
+
+            if (id === 20) {
+                let valorDigitado = prompt("Digite o valor (em R$) com o qual deseja nos presentear:");
+                valorFinal = parseFloat(valorDigitado.replace(',', '.'));
+                
+                if (isNaN(valorFinal) || valorFinal <= 0) {
+                    alert("Por favor, digite um valor válido para prosseguir.");
+                    return;
                 }
-
-                let valorFormatado = valorFinal.toFixed(2).replace('.', ',');
-                
-                let mensagem = "Obrigado, <b>" + nomeConvidado + "</b>!<br><br>";
-                mensagem += "Por favor, faça o pagamento de <b>R$ " + valorFormatado + "</b> no seu banco utilizando a nossa chave PIX abaixo.";
-                
-                document.getElementById('modalMsg').innerHTML = mensagem;
-                document.getElementById('pixModal').style.display = 'flex';
             }
-        }
 
-        function fecharModal() {
-            document.getElementById('pixModal').style.display = 'none';
+            let valorFormatado = valorFinal.toFixed(2).replace('.', ',');
+            
+            let mensagem = "Obrigado, <b>" + nomeConvidado + "</b>!<br><br>";
+            mensagem += "Por favor, faça o pagamento de <b>R$ " + valorFormatado + "</b> no seu banco utilizando a nossa chave PIX abaixo.";
+            
+            document.getElementById('modalMsg').innerHTML = mensagem;
+            document.getElementById('pixModal').style.display = 'flex';
         }
+    }
 
-        function copiarPix() {
-            navigator.clipboard.writeText(chavePixReal).then(() => {
-                alert("Chave PIX copiada com sucesso! Agora é só colar no aplicativo do seu banco.");
-            }).catch(err => {
-                alert("Erro ao copiar. A chave é: " + chavePixReal);
-            });
-        }
+    function fecharModal() {
+        document.getElementById('pixModal').style.display = 'none';
+    }
 
-        iniciarVitrine();
-    </script>
+    function copiarPix() {
+        navigator.clipboard.writeText(chavePixReal).then(() => {
+            alert("Chave PIX copiada com sucesso! Agora é só colar no aplicativo do seu banco.");
+        }).catch(err => {
+            alert("Erro ao copiar. A chave é: " + chavePixReal);
+        });
+    }
+
+    iniciarVitrine();
+</script>
 </body>
 </html>
 
