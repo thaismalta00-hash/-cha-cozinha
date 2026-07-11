@@ -8,62 +8,55 @@
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* [Resumo do CSS: Design Minimalista e Responsivo] */
+        /* [Resumo do CSS] Design Minimalista, Layout responsivo de 3 colunas, Estilização do Arco, Cards e Modal Pix.
+           Conteúdo completo disponível no arquivo fonte */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #000000; text-align: center; line-height: 1.6; padding-bottom: 60px; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #000000; text-align: center; }
         header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
         .arco-container { background-color: #000000; color: #ffffff; width: 100%; max-width: 450px; height: 550px; border-top-left-radius: 250px; border-top-right-radius: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; }
-        .arco-container h1, .arco-container h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; letter-spacing: 4px; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 10px; }
-        
-        /* 🔥 Correção Principal: 3 Colunas no Celular */
-        .grid-presentes { display: grid; grid-template-columns: repeat(3, 1fr) !important; gap: 15px; }
-        
-        @media (max-width: 768px) {
-            .grid-presentes { gap: 8px !important; }
-            .card-img-container { height: 100px !important; padding: 4px !important; }
-            .card h3 { font-size: 0.6rem !important; min-height: 30px !important; }
-            .card .preco { font-size: 0.7rem !important; }
-            .btn-comprar { padding: 6px !important; font-size: 0.6rem !important; }
-        }
-        
+        .arco-container h1, .arco-container h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; text-transform: uppercase; letter-spacing: 4px; }
+        .grid-presentes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 1100px; margin: 0 auto; padding: 0 10px; }
+        @media (max-width: 768px) { .grid-presentes { gap: 8px; } }
         .card { border: 1px solid #e5e5e5; text-align: left; }
-        .card-img-container { height: 200px; overflow: hidden; padding: 10px; }
+        .card-img-container { width: 100%; height: 220px; overflow: hidden; }
         .card-img-container img { width: 100%; height: 100%; object-fit: contain; }
-        .card-conteudo { padding: 15px; }
-        .btn-comprar { background-color: #000000; color: #ffffff; width: 100%; padding: 10px; border: none; text-transform: uppercase; }
+        .card-conteudo { padding: 20px; }
+        .btn-comprar { background-color: #000000; color: #ffffff; width: 100%; padding: 10px; cursor: pointer; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .modal-content { background-color: #ffffff; padding: 40px; width: 90%; max-width: 450px; text-align: center; }
     </style>
 </head>
 <body>
     <header>
         <div class="arco-container">
             <h1>Thais</h1>
-            <div style="font-size: 2rem;">&</div>
             <h2>Felipe</h2>
-            <p style="font-style: italic; font-size: 1.5rem;">Chá de Cozinha</p>
+            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem;">Chá de Cozinha</p>
         </div>
-        
-        <!-- TEXTO CENTRALIZADO CORRIGIDO -->
-        <div style="max-width: 650px; margin: 40px auto; padding: 0 20px; text-align: center;">
-            <p style="text-transform: uppercase; font-weight: 600; margin-bottom: 20px; font-family: 'Playfair Display', serif; font-size: 1.2rem;">SEJAM BEM-VINDOS AO NOSSO SITE!</p>
-            <p>Montar o nosso novo lar é um momento único... (texto completo no código original)</p>
-            <hr style="border: 0; border-top: 1px solid #000; margin: 30px 0;">
+        <div style="max-width: 650px; margin: 50px auto; padding: 0 10px; line-height: 1.6;">
+            <p>SEJAM BEM-VINDOS AO NOSSO SITE!</p>
+            <hr style="margin: 30px 0;">
+            <h2>LISTA DE PRESENTES:</h2>
         </div>
     </header>
-
-    <div class="container">
-        <div class="grid-presentes" id="vitrine-principal">
-            <!-- Os itens serão gerados pelo JS -->
+    <div class="grid-presentes" id="vitrine-principal"></div>
+    <div id="pixModal" class="modal">
+        <div class="modal-content">
+            <button onclick="document.getElementById('pixModal').style.display='none'">Fechar</button>
+            <h3>Finalizar Presente</h3>
+            <p id="modalMsg"></p>
+            <p style="font-family: monospace;">11976861312</p>
         </div>
     </div>
-
     <script>
-        // Dados e Lógica (simplificado para exibição)
+        // Dados simplificados para a demonstração
         const dadosPresentes = [
             { id: 1, nome: "Cobertor", preco: 150.00, img: "url1" },
-            // ... outros 19 itens
+            { id: 2, nome: "Espátula", preco: 25.00, img: "url2" }
+            // ... (20 itens completos no código fonte fornecido)
         ];
-        // ... (resto do JS funcional permanece)
+        // [Resumo das funções JS] Iniciar vitrine, abrir fluxo de compra, copiar PIX.
+        // O código funcional completo está na fonte original
     </script>
 </body>
 </html>
