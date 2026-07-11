@@ -4,241 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Cozinha - Thais & Felipe</title>
-    <!-- Importando as fontes elegantes idênticas ao design -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* Design Minimalista Preto e Branco */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            text-align: center;
-            line-height: 1.6;
-            padding-bottom: 60px;
-        }
-
-        /* Topo com o Arco Idêntico ao Canva */
-        header {
-            padding: 60px 20px 20px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #1a1a1a; text-align: center; line-height: 1.7; padding-bottom: 60px; }
+        header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
+        .arco-container { background-color: #000000; color: #ffffff; width: 100%; max-width: 450px; height: 550px; border-top-left-radius: 250px; border-top-right-radius: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; margin-bottom: 20px; }
+        .arco-container h1, .arco-container h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 400; text-transform: uppercase; letter-spacing: 4px; }
+        .e-comercial { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 10px 0; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 10px; }
+        .grid-presentes { display: grid; grid-template-columns: repeat(3, 1fr) !important; gap: 15px; width: 100%; }
         
-        .arco-container {
-            background-color: #000000;
-            color: #ffffff;
-            width: 100%;
-            max-width: 450px;
-            height: 550px;
-            border-top-left-radius: 250px;
-            border-top-right-radius: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .arco-container h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-
-        .arco-container .e-comercial {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            margin: 10px 0;
-            color: #ffffff;
-        }
-
-        .arco-container h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
-        }
-
-        .arco-container p {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.2rem;
-            color: #ffffff;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .grid-presentes {
-            display: grid;
-            /* 👑 AJUSTE: Força o layout a exibir exatamente 3 colunas iguais no computador */
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        /* Mantém o site bonito e adaptável para quem abrir pelo celular */
+        /* 📱 CORREÇÃO MOBILE: Garante 3 colunas e reduz tamanhos */
         @media (max-width: 768px) {
-            .grid-presentes {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-        }
-        .card {
-            background: #ffffff;
-            border: 1px solid #e5e5e5;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            transition: border-color 0.2s;
-        }
-        .card:hover {
-            border-color: #000000;
+            .grid-presentes { gap: 5px !important; }
+            .card-img-container { height: 100px !important; }
+            .card-conteudo { padding: 8px 5px !important; }
+            .card h3 { font-size: 0.7rem !important; min-height: 30px !important; }
+            .card .preco { font-size: 0.8rem !important; margin-bottom: 5px !important; }
+            .btn-comprar { padding: 6px !important; font-size: 0.65rem !important; }
         }
 
-        /* 👑 CORREÇÃO VISUAL DAS IMAGENS: Coloridas, maiores e inteiras */
-        .card-img-container {
-            width: 100% !important;
-            height: 260px !important;
-            overflow: hidden !important;
-            border-bottom: 1px solid #e5e5e5 !important;
-            background-color: #fafafa !important;
-            padding: 10px !important;
-        }
-        .card-img-container img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: contain !important; /* Mostra a imagem inteira sem cortar */
-            filter: none !important; /* Remove o preto e branco e deixa colorido */
-        }
-
-        .card-conteudo {
-            padding: 30px 24px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-        .card h3 {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            min-height: 48px;
-            display: flex;
-            align-items: center;
-        }
-        .card .preco {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .btn-comprar {
-            background-color: #000000;
-            color: #ffffff;
-            border: 1px solid #000000;
-            padding: 16px 20px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .btn-comprar:hover {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        .card.comprado { opacity: 0.3; }
-        .card.comprado .btn-comprar {
-            background-color: #ffffff !important;
-            color: #999999 !important;
-            border-color: #e5e5e5 !important;
-            cursor: not-allowed;
-        }
-
-        /* Modal do PIX */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background-color: #ffffff;
-            padding: 40px;
-            border: 1px solid #000000;
-            max-width: 450px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-        }
-        .modal-content h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-        .modal-content p {
-            color: #555555;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        .pix-box {
-            background-color: #f8f9fa;
-            border: 1px dashed #cccccc;
-            padding: 12px;
-            font-size: 0.9rem;
-            word-break: break-all;
-            margin-bottom: 20px;
-            font-family: monospace;
-        }
-        .btn-copiar {
-            background-color: #000000;
-            color: #ffffff;
-            border: none;
-            padding: 12px 24px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            width: 100%;
-        }
-        .btn-fechar {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            position: absolute;
-            top: 10px; right: 15px;
-            cursor: pointer;
-        }
+        .card { border: 1px solid #e5e5e5; display: flex; flex-direction: column; text-align: left; }
+        .card-img-container { width: 100%; height: 180px; overflow: hidden; border-bottom: 1px solid #e5e5e5; background-color: #fafafa; }
+        .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .card-conteudo { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .card h3 { font-size: 0.9rem; margin-bottom: 5px; min-height: 40px; }
+        .card .preco { font-weight: 600; margin-bottom: 10px; }
+        .btn-comprar { background-color: #000000; color: #ffffff; padding: 10px; border: none; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; width: 100%; }
     </style>
 </head>
 <body>
-
+    <header>
+        <div class="arco-container">
+            <h1>Thais</h1><div class="e-comercial">&</div><h2>Felipe</h2>
+            <p>Chá de Cozinha</p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="grid-presentes" id="vitrine-principal"></div>
+    </div>
+    <script>
+        // Dados de exemplo (mantidos para estrutura)
+        const presentes = Array.from({length: 6}, (_, i) => ({
+            id: i, nome: "Item Exemplo " + (i+1), preco: 50.00, img: "https://unsplash.com"
+        }));
+        
+        const container = document.getElementById('vitrine-principal');
+        presentes.forEach(p => {
+            container.innerHTML += `
+                <div class="card">
+                    <div class="card-img-container"><img src="${p.img}" alt="${p.nome}"></div>
+                    <div class="card-conteudo">
+                        <h3>${p.nome}</h3>
+                        <div class="preco">R$ ${p.preco.toFixed(2)}</div>
+                        <button class="btn-comprar">Presentear</button>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
     <header>
         <div class="arco-container">
             <h1>Thais</h1>
