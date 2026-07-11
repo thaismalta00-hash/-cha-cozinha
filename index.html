@@ -4,59 +4,406 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Cozinha - Thais & Felipe</title>
+    <!-- Importando as fontes elegantes idênticas ao design -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
     <style>
-        /* [Resumo do CSS] Design Minimalista, Layout responsivo de 3 colunas, Estilização do Arco, Cards e Modal Pix.
-           Conteúdo completo disponível no arquivo fonte */
+        /* Design Minimalista Preto e Branco */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #000000; text-align: center; }
-        header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
-        .arco-container { background-color: #000000; color: #ffffff; width: 100%; max-width: 450px; height: 550px; border-top-left-radius: 250px; border-top-right-radius: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; }
-        .arco-container h1, .arco-container h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; text-transform: uppercase; letter-spacing: 4px; }
-        .grid-presentes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 1100px; margin: 0 auto; padding: 0 10px; }
-        @media (max-width: 768px) { .grid-presentes { gap: 8px; } }
-        .card { border: 1px solid #e5e5e5; text-align: left; }
-        .card-img-container { width: 100%; height: 220px; overflow: hidden; }
-        .card-img-container img { width: 100%; height: 100%; object-fit: contain; }
-        .card-conteudo { padding: 20px; }
-        .btn-comprar { background-color: #000000; color: #ffffff; width: 100%; padding: 10px; cursor: pointer; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
-        .modal-content { background-color: #ffffff; padding: 40px; width: 90%; max-width: 450px; text-align: center; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Topo com o Arco Idêntico ao Canva */
+        header {
+            padding: 60px 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .arco-container {
+            background-color: #000000;
+            color: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            height: 550px;
+            border-top-left-radius: 250px;
+            border-top-right-radius: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .arco-container h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .arco-container .e-comercial {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+
+        .arco-container h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        .arco-container p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.2rem;
+            color: #ffffff;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid-presentes {
+            display: grid;
+            /* 👑 AJUSTE: Força o layout a exibir exatamente 3 colunas iguais no computador */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Mantém o site bonito e adaptável para quem abrir pelo celular */
+        @media (max-width: 768px) {
+            .grid-presentes {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            transition: border-color 0.2s;
+        }
+        .card:hover {
+            border-color: #000000;
+        }
+
+        /* 👑 CORREÇÃO VISUAL DAS IMAGENS: Coloridas, maiores e inteiras */
+        .card-img-container {
+            width: 100% !important;
+            height: 260px !important;
+            overflow: hidden !important;
+            border-bottom: 1px solid #e5e5e5 !important;
+            background-color: #fafafa !important;
+            padding: 10px !important;
+        }
+        .card-img-container img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important; /* Mostra a imagem inteira sem cortar */
+            filter: none !important; /* Remove o preto e branco e deixa colorido */
+        }
+
+        .card-conteudo {
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+        .card .preco {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .btn-comprar {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #000000;
+            padding: 16px 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-comprar:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .card.comprado { opacity: 0.3; }
+        .card.comprado .btn-comprar {
+            background-color: #ffffff !important;
+            color: #999999 !important;
+            border-color: #e5e5e5 !important;
+            cursor: not-allowed;
+        }
+
+        /* Modal do PIX */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #ffffff;
+            padding: 40px;
+            border: 1px solid #000000;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        .modal-content h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .modal-content p {
+            color: #555555;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .pix-box {
+            background-color: #f8f9fa;
+            border: 1px dashed #cccccc;
+            padding: 12px;
+            font-size: 0.9rem;
+            word-break: break-all;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+        .btn-copiar {
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            width: 100%;
+        }
+        .btn-fechar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 10px; right: 15px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="arco-container">
             <h1>Thais</h1>
+            <div class="e-comercial">&</div>
             <h2>Felipe</h2>
-            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem;">Chá de Cozinha</p>
+            <p>Chá de Cozinha</p>
         </div>
-        <div style="max-width: 650px; margin: 50px auto; padding: 0 10px; line-height: 1.6;">
-            <p>SEJAM BEM-VINDOS AO NOSSO SITE!</p>
-            <hr style="margin: 30px 0;">
-            <h2>LISTA DE PRESENTES:</h2>
+                    <!-- Linha horizontal e título centralizados iguaizinhos à foto -->
+            <hr style="border: 0; border-top: 1px solid #000000; margin: 40px 0 20px 0; width: 100%;">
+        
+        <!-- Bloco de Texto Formatado Igualzinho à Foto e com Linhas Puladas -->
+        <div style="max-width: 650px; margin: 50px auto 0 auto; text-align: left; font-size: 1.05rem; color: #000000; line-height: 1.6; letter-spacing: 0.3px;">
+            
+            <p style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; margin-bottom: 30px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.1rem;">SEJAM BEM-VINDOS AO NOSSO SITE!</p>
+            
+        <div style="max-width: 650px; margin: 40px auto 0 auto; text-align: left; font-size: 1rem; color: #1a1a1a; line-height: 1.7; letter-spacing: 0.2px;">
+            
+            <!-- Introdução Principal -->
+            <p style="margin-bottom: 35px; font-size: 1.05rem; color: #333333;">
+                Montar o nosso novo lar é um momento único que estamos preparando com muito carinho. Como já escolhemos e adquirimos grande parte dos itens de acordo com o nosso estilo, organizamos este Chá de Cozinha de uma forma um pouco diferente e muito especial.
+            </p>
+
+            <!-- Seção 01: Funcionamento dos Presentes -->
+            <div style="margin-bottom: 35px; padding-bottom: 5px;">
+                <h3 style="font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: flex; align-items: center; color: #000000;">
+                    <span style="margin-right: 10px;">01.</span> Como funcionam os presentes?
+                </h3>
+                <p style="color: #444444;">
+                    Para nos ajudar a completar os detalhes do enxoval, a nossa lista foi convertida em formato de PIX. Basta selecionar um dos itens simbólicos listados abaixo, clicar na opção <b>"Presentear"</b> e concluir a transferência direto no aplicativo do seu banco.
+                </p>
+            </div>
+
+            <!-- Seção 02: Carinho Especial / Prato Físico -->
+            <div style="margin-bottom: 50px; padding: 25px; background-color: #fcfcfc; border: 1px solid #eeeeee; border-radius: 4px;">
+                <h3 style="font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: flex; align-items: center; color: #000000;">
+                    <span style="margin-right: 10px;">02.</span> Um carinho especial para o nosso lar... 🍽️
+                </h3>
+                <p style="color: #444444; margin-bottom: 15px;">
+                   Além do mimo virtual, gostaríamos muito de levar uma recordação física de cada um de vocês para a nossa rotina.
+                </p>
+                <p style="color: #444444; font-weight: 500;">
+                    Por isso, pedimos gentilmente que no dia do evento você traga <b>um prato de sua escolha (seja ele raso, fundo ou de sobremesa)</b>, com o formato, cor ou estampa que você desejar. Assim, toda vez que formos usar, nos lembraremos com muito carinho da pessoa especial que nos presenteou.
+                </p>
+            </div>
+
+        </div>
+            
+            <!-- Linha horizontal e título centralizados iguaizinhos à foto -->
+            <hr style="border: 0; border-top: 1px solid #000000; margin: 40px 0 20px 0; width: 100%;">
+            
+            <h2 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.1rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; color: #000000; text-align: center;">LISTA DE PRESENTES:</h2>
         </div>
     </header>
-    <div class="grid-presentes" id="vitrine-principal"></div>
+
+
+    <div class="container" id="vitrine-principal">
+        <!-- O JavaScript criará as seções aqui -->
+    </div>
+
+    <!-- Modal do PIX -->
     <div id="pixModal" class="modal">
         <div class="modal-content">
-            <button onclick="document.getElementById('pixModal').style.display='none'">Fechar</button>
-            <h3>Finalizar Presente</h3>
+            <button class="btn-fechar" onclick="fecharModal()">&times;</button>
+            <h2>Finalizar Presente</h2>
             <p id="modalMsg"></p>
-            <p style="font-family: monospace;">11976861312</p>
+            <div class="pix-box" id="chavePixTexto">11976861312</div>
+            <button class="btn-copiar" onclick="copiarPix()">Copiar Chave PIX</button>
         </div>
     </div>
-    <script>
-        // Dados simplificados para a demonstração
+
+            <script>
+        const chavePixReal = "11976861312";
+
+        // Lista oficial de 20 presentes super criativos e leves (Sem álcool ou piadas pesadas)
         const dadosPresentes = [
-            { id: 1, nome: "Cobertor", preco: 150.00, img: "url1" },
-            { id: 2, nome: "Espátula", preco: 25.00, img: "url2" }
-            // ... (20 itens completos no código fonte fornecido)
+            { id: 1, nome: "Cobertor para a noiva que está sempre coberta de razão", preco: 170.00, comprado: false, img: "cobertor.jpeg" },
+            { id: 2, nome: "Espátula para não deixar sobrar um pingo de amor", preco: 45.00, comprado: false, img: "espatula.jpeg" },
+            { id: 3, nome: "Jogo de xícaras para o café que vai curar as DRs da madrugada", preco: 65.00, comprado: false, img: "xicaras.jpeg" },
+            { id: 4, nome: "Rodinho de pia para o noivo lembrar que pia não se limpa sozinha", preco: 30.00, comprado: false, img: "rododepia.jpeg" },
+            { id: 5, nome: "Almofada para o noivo dormir no sofá quando perder a discussão", preco: 60.00, comprado: false, img: "almofadas.jpeg" },
+            { id: 6, nome: "Esfregão - Passa Pano para o noivo", preco: 55.00, comprado: false, img: "esfregao.jpeg" },
+            { id: 7, nome: "Frigideira - onde qualquer erro é frito", preco: 85.00, comprado: false, img: "frigideira.jpeg" },
+            { id: 8, nome: "Potes herméticos para guardar os segredos do amor", preco: 95.00, comprado: false, img: "poteshermeticos.jpeg" },
+            { id: 9, nome: "Etiquetadora de Território - para o noivo marcar o pequeno espaço no guarda-roupa", preco: 70.00, comprado: false, img: "meuguardaroupa.jpeg" },
+            { id: 10, nome: "Cofre - O que é seu é nosso, o que é meu é meu! Guardar as economias sobre a gerencia da noiva.", preco: 110.00, comprado: false, img: "cofre.jpeg" },
+            { id: 11, nome: "Panela de pressão para testar se o primeiro feijão vai explodir a cozinha nova", preco: 140.00, comprado: false, img: "paneladepressao.jpeg" },
+            { id: 12, nome: "Sanduicheira fast para quando a preguiça de cozinhar vencer", preco: 100.00, comprado: false, img: "sanduicheira.jpeg" },
+            { id: 13, nome: "Lixeira automática para jogar fora qualquer desentendimento", preco: 110.00, comprado: false, img: "lixeira.jpeg" },
+            { id: 14, nome: "Balança digital para pesar quem está gastando mais no mês", preco: 50.00, comprado: false, img: "balanca.jpeg" },
+            { id: 15, nome: "Capacho de entrada para disfarçar o tanto de compras que chegam por dia", preco: 65.00, comprado: false, img: "tapete.jpeg" },
+            { id: 16, nome: "Potes Organizador para achar as coisas que o noivo diz que sumiram", preco: 65.00, comprado: false, img: "organizador.jpeg" },
+            { id: 17, nome: "Pano de Prato - Enxuga Lágrima com saudade de mamãe", preco: 30.00, comprado: false, img: "pano.jpeg" },
+            { id: 18, nome: "Vassoura Anti DR", preco: 50.00, comprado: false, img: "kit.jpeg" },
+            { id: 19, nome: "Luminária de cabeceira para quando um quiser ler e o outro quiser breu total", preco: 80.00, comprado: false, img: "luminaria.jpeg" },
+            { id: 20, nome: "Livre para nos abençoar com o valor que o seu coração desejar (Valor Livre)", preco: 0.00, comprado: false, img: "porquinho.jpeg" }
         ];
-        // [Resumo das funções JS] Iniciar vitrine, abrir fluxo de compra, copiar PIX.
-        // O código funcional completo está na fonte original
-    </script>
+
+    function iniciarVitrine() {
+        const containerPrincipal = document.getElementById('vitrine-principal');
+        containerPrincipal.innerHTML = '';
+
+        const grid = document.createElement('div');
+        grid.className = 'grid-presentes';
+
+        dadosPresentes.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "card " + (item.comprado ? 'comprado' : '');
+            
+            let textoPreco = item.id === 20 ? "Valor Livre" : "R$ " + item.preco.toFixed(2).replace('.', ',');
+
+            let html = '<div class="card-img-container" style="width: 100%; height: 260px; overflow: hidden; border-bottom: 1px solid #e5e5e5; padding: 10px; background-color: #fafafa;">';
+            html += '<img src="' + item.img + '" style="width: 100%; height: 100%; object-fit: contain;" alt="' + item.nome + '">';
+            html += '</div>';
+            html += '<div class="card-conteudo"><div><h3>' + item.nome + '</h3>';
+            html += '<div class="preco">' + textoPreco + '</div></div>';
+            html += '<button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' ';
+            html += 'onclick="abrirFluxoCompra(' + item.id + ', \'' + item.nome.replace(/'/g, "\\'") + '\', ' + item.preco + ')">';
+            html += (item.comprado ? 'Esgotado' : 'Presentear') + '</button></div>';
+            
+            card.innerHTML = html;
+            grid.appendChild(card);
+        });
+
+        containerPrincipal.appendChild(grid);
+    }
+
+    function abrirFluxoCompra(id, nome, preco) {
+        let nomeConvidado = prompt("Você selecionou: " + nome + ".\nDigite seu nome completo para confirmar:");
+        
+        if (nomeConvidado && nomeConvidado.trim() !== "") {
+            let valorFinal = preco;
+
+            if (id === 20) {
+                let valorDigitado = prompt("Digite o valor (em R$) com o qual deseja nos presentear:");
+                valorFinal = parseFloat(valorDigitado.replace(',', '.'));
+                
+                if (isNaN(valorFinal) || valorFinal <= 0) {
+                    alert("Por favor, digite um valor válido para prosseguir.");
+                    return;
+                }
+            }
+
+            let valorFormatado = valorFinal.toFixed(2).replace('.', ',');
+            
+            let mensagem = "Obrigado, <b>" + nomeConvidado + "</b>!<br><br>";
+            mensagem += "Por favor, faça o pagamento de <b>R$ " + valorFormatado + "</b> no seu banco utilizando a nossa chave PIX abaixo.";
+            
+            document.getElementById('modalMsg').innerHTML = mensagem;
+            document.getElementById('pixModal').style.display = 'flex';
+        }
+    }
+
+    function fecharModal() {
+        document.getElementById('pixModal').style.display = 'none';
+    }
+
+    function copiarPix() {
+        navigator.clipboard.writeText(chavePixReal).then(() => {
+            alert("Chave PIX copiada com sucesso! Agora é só colar no aplicativo do seu banco.");
+        }).catch(err => {
+            alert("Erro ao copiar. A chave é: " + chavePixReal);
+        });
+    }
+
+    iniciarVitrine();
+</script>
 </body>
 </html>
