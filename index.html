@@ -4,114 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Cozinha - Thais & Felipe</title>
-   
     <!-- Importando as fontes elegantes: Playfair para títulos e Montserrat para textos -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Importação da fonte escrita à mão bem delicada (Great Vibes) -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
     <style>
         /* Design Minimalista Profissional */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-/* Configuração global limpa */
-body { 
-    font-family: 'Montserrat', sans-serif; 
-    background-color: #ffffff; 
-    color: #2b2b2b; /* Um cinza bem escuro fica menos agressivo que o preto puro */
-    text-align: center; 
-    line-height: 1.8; 
-    min-height: 100vh;
-    position: relative;
-    
-    /* Espaçamentos de segurança da moldura */
-    padding-top: 50px;    
-    padding-bottom: 80px; 
-    padding-left: 20px;   
-    padding-right: 20px;  
-    box-sizing: border-box;
-    
-    /* Garante que tudo dentro do body fique centralizado na tela */
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-}
-
-/* 🎯 ALINHAMENTO DO TEXTO "Chá de Cozinha" */
-h2, .titulo-cha {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;          /* Deixa a letra Montserrat bem fina e elegante */
-    font-style: italic;        /* Mantém o itálico sutil */
-    font-size: 1.6rem;         /* Reduz o tamanho para não parecer grotesco */
-    letter-spacing: 2px;       /* Dá um espaço chique entre as letras */
-    margin-top: 25px;
-    margin-bottom: 5px;
-    text-transform: uppercase; /* Opcional: deixa em caixa alta moderna */
-    display: inline-block;
-    width: 100%;
-    text-align: center;        /* Alinha perfeitamente ao meio da foto */
-}
-
-/* ✍️ LETRA ESCRITA À MÃO DELICADA PARA "Thais & Felipe" */
-h1, .nomes-noivos {
-    font-family: 'Great Vibes', cursive; /* Aplica a fonte manuscrita */
-    font-weight: 400;
-    font-size: 3.2rem;         /* Tamanho perfeito: nem gigante, nem apagado */
-    color: #1a1a1a;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    display: inline-block;
-    width: 100%;
-    text-align: center;        /* Alinha perfeitamente ao centro */
-    text-transform: none;      /* IMPORTANTE: escrita à mão precisa de maiúsculas e minúsculas juntas */
-}
-
-/* Ajuste fino para o subtítulo "Sejam Bem-vindos" */
-h3, .subtitulo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 0.9rem;         /* Menor e mais delicado */
-    letter-spacing: 3px;       /* Estilo espaçado sofisticado */
-    margin-bottom: 25px;
-}
-
-/* 👑 MOLDURA FIXA PARA COMPUTADORES */
-body::after {
-    content: "";
-    position: fixed;
-    top: 20px;     
-    bottom: 20px;  
-    left: 20px;    
-    right: 20px;   
-    border: 2px solid #000000; 
-    pointer-events: none; 
-    z-index: 9999; 
-}
-
-/* 📱 AJUSTE EXCLUSIVO PARA CELULARES */
-@media (max-width: 768px) {
-    body {
-        /* Mantém o texto protegido nas telas menores */
-        padding-top: 35px;
-        padding-bottom: 60px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    
-    body::after {
-        top: 15px;      
-        bottom: 15px;   
-        left: 15px; /* Deixei a moldura inteira agora que o texto está protegido! */
-        right: 15px;       
-        border: 2px solid #000000;
-    }
-}
-        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #ffffff; 
+            color: #1a1a1a; 
+            text-align: center; 
+            line-height: 1.7; 
+            padding-bottom: 60px; 
+            /* 👑 NOVA MOLDURA PRETA EM TODO O SITE */
+            border: 2px solid #000000 !important;
+            min-height: 100vh;
+        }
         header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
         
         /* Regra da Capa: Mostra a imagem do casal sem distorcer */
