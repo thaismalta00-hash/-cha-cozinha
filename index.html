@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Cozinha - Thais & Felipe</title>
-    <!-- Importando as fontes elegantes: Playfair para títulos e Montserrat para textos -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Links do Google Fonts atualizados com a fonte Caveat -->
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <style>
    /* Design Minimalista Profissional */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -90,6 +92,43 @@
             width: 100% !important;
             text-align: center !important;
         }
+
+/* ✍️ BLOCO INTRODUÇÃO (Início do site com a fonte Caveat) */
+.bloco-intro {
+    font-family: 'Caveat', cursive !important;
+    font-size: 1.7rem !important;   /* Tamanho da letra de mão */
+    font-weight: 500 !important;    
+    color: #3a3a3a !important;      /* Cinza escuro suave */
+    line-height: 1.4 !important;    
+    max-width: 650px !important;    /* Centraliza e não deixa o texto espalhar muito */
+    margin: 25px auto !important;   
+    padding: 0 10px !important;
+    text-align: center !important;
+}
+
+/* 🍽️ BLOCO AFETIVO (Mensagem sobre trazer o prato com a fonte Caveat) */
+.bloco-afetivo {
+    font-family: 'Caveat', cursive !important;
+    font-size: 1.7rem !important;   
+    font-weight: 500 !important;    
+    color: #3a3a3a !important;      
+    line-height: 1.4 !important;    
+    max-width: 650px !important;    
+    margin: 25px auto !important;   
+    padding: 0 10px !important;
+    text-align: center !important;
+}
+
+/* 📱 AJUSTES DE TAMANHO EXCLUSIVOS PARA CELULARES */
+@media (max-width: 768px) {
+    .bloco-intro, 
+    .bloco-afetivo {
+        font-size: 1.45rem !important; /* Tamanho confortável para telas menores */
+        margin: 20px auto !important;
+    }
+}
+
+
         header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
         
         /* Regra da Capa: Mostra a imagem do casal sem distorcer */
@@ -294,16 +333,18 @@
             <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; color: #000000; margin-bottom: 5px; letter-spacing: 1px;">Chá de Cozinha</p>
             <h1 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 400; text-transform: uppercase; letter-spacing: 3px; color: #000000;">Thais & Felipe</h1>
         </div>
+
+          <!-- Linha horizontal preta e Título da Lista -->
+            <hr style="border: 0; border-top: 1px solid #000000; margin: 50px 0 30px 0; width: 100%;">
         
         <!-- TEXTO DO SITE COM PADRÃO PROFISSIONAL E SPACES SEU -->
         <div style="max-width: 650px; margin: 25px auto 0 auto; text-align: left; font-size: 1rem; color: #1a1a1a; line-height: 1.7; letter-spacing: 0.2px; padding: 0 20px;">
             
             <p style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 35px; font-family: 'Playfair Display', serif; font-size: 1.25rem;">SEJAM BEM-VINDOS AO NOSSO SITE!</p>
             
-            <p style="margin-bottom: 35px; color: #333333;">
-                Montar o nosso novo lar é um momento único que estamos preparando com muito carinho. Como já escolhemos e adquirimos grande parte dos itens de acordo com o nosso estilo, organizamos este Chá de Cozinha em um formato diferente e especial.
-            </p>
-
+<p class="bloco-intro">
+    Montar o nosso novo lar é um momento único que estamos preparando com muito carinho. Como já escolhemos e adquirimos grande parte dos itens de acordo com o nosso estilo, organizamos este Chá de Cozinha em um formato diferente e especial.
+</p>
             <!-- Seção Como funcionam os presentes (Sem número) -->
             <div style="margin-bottom: 35px;">
                 <p style="font-size: 1.05rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #000000;">
@@ -316,15 +357,13 @@
 
             <!-- Seção Um carinho especial (Sem número) -->
             <div style="margin-bottom: 50px; padding: 25px; background-color: #fcfcfc; border: 1px solid #eeeeee; border-radius: 4px;">
-                <p style="font-size: 1.05rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #000000;">
-                    Um carinho especial para o nosso lar... 🍽️
-                </p>
-                <p style="color: #444444; margin-bottom: 12px;">
-                    Além do mimo virtual, queremmos levar uma lembrança física e afetiva de cada um de vocês para o nosso dia a dia. 
-                </p>
-                <p style="color: #444444;">
-                    Por isso, pedimos gentilmente que no dia do evento você nos traga <b>um prato de sua escolha (seja ele raso, fundo ou de sobremesa)</b>, com o formato, cor ou estampa que você desejar. Assim, toda vez que formos usar, nos lembraremos com muito carinho da pessoa especial que nos presenteou.
-                </p>
+                
+<p class="texto-afetivo">Um carinho especial para o nosso lar... 🍽️</p>
+
+<p class="texto-afetivo">Além do mimo virtual, queremos levar uma lembrança física e afetiva de cada um de vocês para o nosso dia a dia.</p>
+
+<p class="texto-afetivo">Por isso, pedimos gentilmente que no dia do evento você nos traga um prato de sua escolha (seja ele raso, fundo ou de sobremesa), com o formato, cor ou estampa que você desejar. Assim, toda vez que formos usar, nos lembraremos com muito carinho da pessoa especial que nos presenteou.</p>
+
             </div>
 
             <!-- Linha horizontal preta e Título da Lista -->
