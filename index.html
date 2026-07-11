@@ -11,17 +11,29 @@
     <style>
         /* Design Minimalista Profissional */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-/* 👑 NOVA MOLDURA PRETA MAIS PARA DENTRO DO SITE */
+/* 👑 MOLDURA FIXA PARA COMPUTADORES (Tela cheia nas 4 bordas) */
 body::after {
     content: "";
     position: fixed;
-    top: 20px;     /* Distância do topo (aumente para por mais para dentro) */
-    bottom: 20px;  /* Distância do fundo */
-    left: 20px;    /* Distância da esquerda */
-    right: 20px;   /* Distância da direita */
-    border: 2px solid #000000; /* Sua borda preta */
-    pointer-events: none; /* Garante que não vai bloquear os cliques no site */
-    z-index: 9999; /* Fica por cima de tudo */
+    top: 20px;     
+    bottom: 20px;  
+    left: 20px;    
+    right: 20px;   
+    border: 2px solid #000000; 
+    pointer-events: none; 
+    z-index: 9999; 
+}
+
+/* 📱 AJUSTE EXCLUSIVO PARA CELULARES (Remove as bordas laterais para o texto não sumir) */
+@media (max-width: 768px) {
+    body::after {
+        top: 15px;      /* Distância do topo no celular */
+        bottom: 15px;   /* Distância do rodapé no celular */
+        left: 0;        /* Cola na esquerda */
+        right: 0;       /* Cola na direita */
+        border-left: none;  /* Remove a linha da esquerda */
+        border-right: none; /* Remove a linha da direita */
+    }
 }
         header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
         
