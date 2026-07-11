@@ -135,30 +135,68 @@
         @media (max-width: 768px) { .capa-container { height: 240px; } }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 10px; }
 
-/* 👑 RECONSTRUTOR DA IMAGEM CAPA: Maior, Retangular e Estilo Banner */
+/* 👑 IMAGEM DA CAPA: Retangular, Ampliada e 100% sem cortes */
 .capa-container { 
-    width: 100%; 
-    max-width: 800px;         /* 📏 Aumentado de 650px para 800px para ficar maior */
-    height: 450px;            /* 📐 Proporção retangular perfeita para Computadores (Estilo 16:9 widescreen) */
-    background-image: url('casal.jpeg'); 
-    background-size: cover;   /* 🔥 Preenche todo o retângulo sem deixar barras brancas nas laterais */
-    background-position: center 35%; /* Centraliza o foco da foto (ajuste a porcentagem se precisar subir ou descer o rosto de vocês) */
-    background-repeat: no-repeat; 
-    border-radius: 8px;       /* Cantinhos levemente arredondados modernos */
+    width: 100% !important; 
+    max-width: 750px !important; /* Mantém um tamanho retangular imponente no PC */
+    height: auto !important;     /* Deixa a altura se ajustar sozinha ao formato real da foto */
+    object-fit: contain !important; /* 🔥 Garante que a imagem inteira apareça sem NENHUM corte */
+    border-radius: 8px; 
     box-shadow: none !important; 
-    margin-bottom: 35px; 
+    margin: 0 auto 25px auto !important; /* Alinha a imagem cirurgicamente ao meio do site */
+    display: block !important;
 }
 
-/* 📱 AJUSTE DA PROPORÇÃO RETANGULAR PARA O CELULAR */
+/* 🎯 ALINHAMENTO E DIMINUIÇÃO DO TEXTO "Chá de Cozinha" */
+h2, .titulo-cha {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 300 !important;   
+    font-style: italic !important; 
+    font-size: 1.15rem !important; /* Diminuído para não criar blocos grotescos */
+    letter-spacing: 3px !important;
+    margin-top: 25px !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase !important; 
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important; /* Força o alinhamento central */
+}
+
+/* ✍️ ALINHAMENTO E DIMINUIÇÃO DA LETRA "Thais & Felipe" */
+h1, .nomes-noivos {
+    font-family: 'Great Vibes', cursive !important; 
+    font-weight: 400 !important;
+    font-size: 2.7rem !important;  /* Reduzido para ficar superdelicado de convite */
+    color: #1a1a1a !important;
+    margin-top: 5px !important;
+    margin-bottom: 20px !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important; /* Força o alinhamento central */
+    text-transform: none !important; 
+}
+
+/* Ajuste fino para o subtítulo "Sejam Bem-vindos" */
+h3, .subtitulo {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 0.85rem !important; /* Proporção ideal menor */
+    letter-spacing: 3px !important;
+    margin-bottom: 30px !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+/* 📱 AJUSTE EXCLUSIVO PARA O CELULAR */
 @media (max-width: 768px) { 
     .capa-container { 
-        max-width: 100%;      /* Ocupa quase toda a largura da tela do celular */
-        height: 220px;        /* 📐 Altura retangular proporcional e linda para telas de smartphones */
-        background-position: center center;
+        max-width: 100% !important; /* No celular ela ocupa a largura da tela sem distorcer */
     } 
+    h1, .nomes-noivos {
+        font-size: 2.3rem !important; /* Evita que os nomes quebrem linha de forma errada no celular */
+    }
 }
-
-
         /* 👑 CORREÇÃO: Garante 3 colunas de imagens uma ao lado da outra e centraliza os elementos */
         .grid-presentes { 
             display: grid !important; 
@@ -327,7 +365,9 @@
     <header style="padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center;">
         
         <!-- 📸 Imagem de capa do casal centralizada e proporcional -->
-        <div class="capa-container"></div>
+        <!-- Nova tag de imagem que impede fisicamente o corte do rosto ou cenário -->
+<img src="casal.jpeg" alt="Thais e Felipe" class="capa-container">
+
         
         <!-- 👑 Nomes centralizados logo abaixo da imagem de capa -->
         <div style="margin-top: 15px; margin-bottom: 30px;">
