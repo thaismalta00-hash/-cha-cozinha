@@ -20,12 +20,55 @@
             padding-bottom: 60px;
         }
 
-        header {
-            padding: 60px 20px 20px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            <header style="padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center;">
+        
+        <!-- 📸 Imagem de capa centralizada (Substitua o link pela sua foto real se quiser) -->
+        <div class="capa-container" style="background-image: url('casal.jpeg');"></div>
+        
+        <!-- 👑 Títulos centralizados logo abaixo da imagem -->
+        <div style="margin-top: 25px; margin-bottom: 20px;">
+            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; color: #000000; margin-bottom: 5px; letter-spacing: 1px;">Chá de Cozinha</p>
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 400; text-transform: uppercase; letter-spacing: 3px; color: #000000;">Thais & Felipe</h1>
+        </div>
+        
+        <!-- TEXTO DO SITE (Alinhado e Profissional) -->
+        <div style="max-width: 650px; margin: 25px auto 0 auto; text-align: left; font-size: 1rem; color: #1a1a1a; line-height: 1.7; letter-spacing: 0.2px;">
+            
+            <p style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 35px; font-family: 'Playfair Display', serif; font-size: 1.25rem;">SEJAM BEM-VINDOS AO NOSSO SITE!</p>
+            
+            <p style="margin-bottom: 35px; color: #333333;">
+                Montar o nosso novo lar é um momento único que estamos preparando com muito carinho. Como já escolhemos e adquirimos grande parte dos itens de acordo com o nosso estilo pessoal, organizamos este Chá de Cozinha em um formato dinâmico, moderno e muito especial.
+            </p>
+
+            <!-- Seção Como funcionam os presentes -->
+            <div style="margin-bottom: 35px;">
+                <p style="font-size: 1.05rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #000000;">
+                    Como funcionam os presentes?
+                </p>
+                <p style="color: #444444;">
+                    Para nos ajudar a completar os detalhes do enxoval, a nossa lista foi convertida em formato de contribuição via PIX. O processo é simples e 100% seguro: basta selecionar um dos itens simbólicos listados abaixo, clicar na opção <b>"Presentear"</b> e utilizar o recurso de cópia rápida para concluir a transferência direto no aplicativo do seu banco.
+                </p>
+            </div>
+
+            <!-- Seção Um carinho especial -->
+            <div style="margin-bottom: 50px; padding: 25px; background-color: #fcfcfc; border: 1px solid #eeeeee; border-radius: 4px;">
+                <p style="font-size: 1.05rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #000000;">
+                    Um carinho especial para o nosso lar... 🍽️
+                </p>
+                <p style="color: #444444; margin-bottom: 12px;">
+                    Além do mimo virtual, fazemos questão de levar uma lembrança física e afetiva de cada um de vocês para a nossa rotina. 
+                </p>
+                <p style="color: #444444;">
+                    Por isso, pedimos gentilmente que no dia do evento você traga <b>um prato de sua escolha (seja ele raso, fundo ou de sobremesa)</b>, com o formato, cor ou estampa que você desejar. Assim, toda vez que formos usar, nos lembraremos com muito carinho da pessoa especial que nos presenteou.
+                </p>
+            </div>
+
+            <!-- Linha horizontal preta e Título da Lista -->
+            <hr style="border: 0; border-top: 1px solid #000000; margin: 50px 0 30px 0; width: 100%;">
+            
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: #000000; text-align: left; margin-bottom: 30px;">LISTA DE PRESENTES:</h2>
+        </div>
+    </header>
         
         .arco-container {
             background-color: #000000;
@@ -43,29 +86,24 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .arco-container h1, .arco-container h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            line-height: 1.4;
-            margin-bottom: 10px;
+        /* 👑 NOVA CAPA DE IMAGEM PROFISSIONAL */
+        .capa-container {
+            width: 100%;
+            max-width: 650px; /* Alinhado perfeitamente com a largura do seu texto */
+            height: 350px; /* Altura ideal de um banner elegante */
+            background-image: url('SUA_IMAGEM_AQUI.jpg'); /* Cole o link da sua foto aqui */
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px; /* Cantos levemente suavizados para um tom moderno */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
         }
 
-        .arco-container .e-comercial {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin: 10px 0;
-        }
-
-        .arco-container p {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.2rem;
-            color: #ffffff;
-            font-weight: 400;
-            letter-spacing: 1px;
+        /* Ajuste de altura para ficar proporcional e perfeita na tela do Celular */
+        @media (max-width: 768px) {
+            .capa-container {
+                height: 220px;
+            }
         }
 
         .container {
