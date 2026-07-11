@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Cozinha - Thais & Felipe</title>
-    <!-- Importando as fontes elegantes: Playfair para títulos e Montserrat para textos -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* Design Minimalista Profissional */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #1a1a1a; text-align: center; line-height: 1.7; padding-bottom: 60px; }
         header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
-        /* 👑 REGRA DA CAPA: Mantém a imagem inteira e centralizada sem distorcer */
-        .capa-container { width: 100%; max-width: 650px; height: 380px; background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        @media (max-width: 768px) { .capa-container { height: 240px; } }
+        .capa-container { width: 100%; max-width: 650px; height: 380px; background-image: url('casal.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 10px; }
         .grid-presentes { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; margin-bottom: 40px; }
-        /* ... outros estilos CSS mantidos do original ... */
+        @media (max-width: 768px) { .capa-container { height: 240px; } .grid-presentes { gap: 6px !important; } .card-img-container { height: 110px !important; } .card h3 { font-size: 0.62rem !important; } }
+        .card { background: #ffffff; border: 1px solid #e5e5e5; display: flex; flex-direction: column; text-align: left; }
+        .card-img-container { width: 100% !important; height: 260px; overflow: hidden !important; border-bottom: 1px solid #e5e5e5 !important; padding: 10px; }
+        .card-img-container img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
+        .card-conteudo { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+        .card h3 { font-size: 0.9rem; margin-bottom: 10px; text-transform: uppercase; }
+        .card .preco { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+        .btn-comprar { background-color: #000000; color: #ffffff; border: none; padding: 10px; width: 100%; text-transform: uppercase; cursor: pointer; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background-color: #ffffff; padding: 30px; max-width: 400px; width: 90%; text-align: center; }
+        .pix-box { background-color: #f8f9fa; padding: 10px; font-family: monospace; margin: 15px 0; }
     </style>
 </head>
 <body>
