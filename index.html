@@ -18,12 +18,18 @@ body {
     color: #1a1a1a; 
     text-align: center; 
     line-height: 1.7; 
-    padding-bottom: 60px; 
     min-height: 100vh;
     position: relative;
+    
+    /* 🚨 CORREÇÃO AQUI: Cria uma área segura para o texto não bater na moldura */
+    padding-top: 40px;    
+    padding-bottom: 80px; 
+    padding-left: 30px;   
+    padding-right: 30px;  
+    box-sizing: border-box;
 }
 
-/* 👑 MOLDURA FIXA PARA COMPUTADORES (Tela cheia nas 4 bordas) */
+/* 👑 MOLDURA FIXA PARA COMPUTADORES */
 body::after {
     content: "";
     position: fixed;
@@ -36,17 +42,26 @@ body::after {
     z-index: 9999; 
 }
 
-/* 📱 AJUSTE EXCLUSIVO PARA CELULARES (Remove as bordas laterais para o texto não sumir) */
+/* 📱 AJUSTE EXCLUSIVO PARA CELULARES */
 @media (max-width: 768px) {
+    body {
+        /* Mantém o texto protegido nas telas menores */
+        padding-top: 35px;
+        padding-bottom: 60px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
     body::after {
-        top: 15px;      /* Distância do topo no celular */
-        bottom: 15px;   /* Distância do rodapé no celular */
-        left: 0;        /* Cola na esquerda */
-        right: 0;       /* Cola na direita */
-        border-left: none;  /* Remove a linha da esquerda */
-        border-right: none; /* Remove a linha da direita */
+        top: 15px;      
+        bottom: 15px;   
+        left: 15px; /* Deixei a moldura inteira agora que o texto está protegido! */
+        right: 15px;       
+        border: 2px solid #000000;
     }
 }
+
+        
         
         header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
         
