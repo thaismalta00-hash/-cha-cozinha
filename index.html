@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Cozinha - Thais & Felipe</title>
-    <!-- Importando as fontes elegantes idênticas ao design -->
+    <!-- Importando as fontes elegantes: Playfair para títulos e Montserrat para textos -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* Design Minimalista Preto e Branco */
+        /* Design Minimalista Profissional */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #ffffff;
-            color: #000000;
+            color: #1a1a1a;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.7;
             padding-bottom: 60px;
         }
 
-        /* Topo com o Arco Idêntico ao Canva */
         header {
             padding: 60px 20px 20px 20px;
             display: flex;
@@ -44,8 +43,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .arco-container h1 {
-            font-family: 'Cinzel', serif;
+        .arco-container h1, .arco-container h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
             font-weight: 400;
             text-transform: uppercase;
@@ -55,19 +54,9 @@
         }
 
         .arco-container .e-comercial {
-            font-family: 'Cinzel', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             margin: 10px 0;
-            color: #ffffff;
-        }
-
-        .arco-container h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
         }
 
         .arco-container p {
@@ -80,25 +69,47 @@
         }
 
         .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 10px;
         }
 
+        /* 👑 GRID DO PRODUTO: Força 3 imagens por linha tanto no PC quanto no Celular */
         .grid-presentes {
-            display: grid;
-            /* 👑 AJUSTE: Força o layout a exibir exatamente 3 colunas iguais no computador */
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 15px !important;
             margin-bottom: 40px;
         }
 
-        /* Mantém o site bonito e adaptável para quem abrir pelo celular */
+        /* Ajustes específicos para as 3 colunas ficarem lindas e legíveis no Celular */
         @media (max-width: 768px) {
             .grid-presentes {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 8px !important;
+            }
+            .card-img-container {
+                height: 110px !important; /* Altura perfeita para não esticar no celular */
+                padding: 4px !important;
+            }
+            .card-conteudo {
+                padding: 10px 6px !important;
+            }
+            .card h3 {
+                font-size: 0.65rem !important; /* Letra menor para caber em 3 colunas */
+                min-height: 42px !important;
+                line-height: 1.3 !important;
+            }
+            .card .preco {
+                font-size: 0.75rem !important;
+                margin-bottom: 8px !important;
+            }
+            .btn-comprar {
+                padding: 8px 4px !important;
+                font-size: 0.6rem !important;
+                letter-spacing: 0.5px !important;
             }
         }
+
         .card {
             background: #ffffff;
             border: 1px solid #e5e5e5;
@@ -111,56 +122,55 @@
             border-color: #000000;
         }
 
-        /* 👑 CORREÇÃO VISUAL DAS IMAGENS: Coloridas, maiores e inteiras */
         .card-img-container {
             width: 100% !important;
-            height: 260px !important;
+            height: 260px;
             overflow: hidden !important;
             border-bottom: 1px solid #e5e5e5 !important;
             background-color: #fafafa !important;
-            padding: 10px !important;
+            padding: 10px;
         }
         .card-img-container img {
             width: 100% !important;
             height: 100% !important;
-            object-fit: contain !important; /* Mostra a imagem inteira sem cortar */
-            filter: none !important; /* Remove o preto e branco e deixa colorido */
+            object-fit: contain !important;
+            filter: none !important; /* Mantém fotos coloridas */
         }
 
         .card-conteudo {
-            padding: 30px 24px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             justify-content: space-between;
         }
         .card h3 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-bottom: 10px;
-            font-weight: 400;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             min-height: 48px;
             display: flex;
             align-items: center;
         }
         .card .preco {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 24px;
+            margin-bottom: 15px;
         }
 
         .btn-comprar {
             background-color: #000000;
             color: #ffffff;
             border: 1px solid #000000;
-            padding: 16px 20px;
-            font-size: 0.85rem;
+            padding: 12px 15px;
+            font-size: 0.8rem;
             cursor: pointer;
             font-weight: 600;
             width: 100%;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             transition: background 0.2s, color 0.2s;
         }
         .btn-comprar:hover {
@@ -194,18 +204,6 @@
             width: 90%;
             text-align: center;
             position: relative;
-        }
-        .modal-content h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-        .modal-content p {
-            color: #555555;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
         }
         .pix-box {
             background-color: #f8f9fa;
