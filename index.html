@@ -96,7 +96,7 @@
 /* ✍️ BLOCO INTRODUÇÃO (Início do site com a fonte Caveat) */
 .bloco-intro {
     font-family: 'Caveat', cursive !important;
-    font-size: 1.7rem !important;   /* Tamanho da letra de mão */
+    font-size: 1.45rem !important;  /* 📏 Reduzido de 1.7rem para 1.45rem (Mais delicado) */
     font-weight: 500 !important;    
     color: #3a3a3a !important;      /* Cinza escuro suave */
     line-height: 1.4 !important;    
@@ -106,25 +106,24 @@
     text-align: center !important;
 }
 
-/* 🍽️ BLOCO AFETIVO (Mensagem sobre trazer o prato com a fonte Caveat) */
-.bloco-afetivo {
+/* 🍽️ BLOCO AFETIVO (Dentro da caixinha cinza com a fonte Caveat) */
+.texto-afetivo {
     font-family: 'Caveat', cursive !important;
-    font-size: 1.7rem !important;   
+    font-size: 1.45rem !important;  /* 📏 Reduzido para combinar perfeitamente com a introdução */
     font-weight: 500 !important;    
     color: #3a3a3a !important;      
     line-height: 1.4 !important;    
     max-width: 650px !important;    
-    margin: 25px auto !important;   
-    padding: 0 10px !important;
+    margin: 12px auto !important;   /* Ajuste fino na distância entre as frases */
+    padding: 0 5px !important;
     text-align: center !important;
 }
 
 /* 📱 AJUSTES DE TAMANHO EXCLUSIVOS PARA CELULARES */
 @media (max-width: 768px) {
     .bloco-intro, 
-    .bloco-afetivo {
-        font-size: 1.45rem !important; /* Tamanho confortável para telas menores */
-        margin: 20px auto !important;
+    .texto-afetivo {
+        font-size: 1.3rem !important; /* 📏 Letra ligeiramente menor no celular para não quebrar muitas linhas */
     }
 }
 
@@ -136,27 +135,29 @@
         @media (max-width: 768px) { .capa-container { height: 240px; } }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 10px; }
 
-        /* 👑 GRID DO PRODUTO: Força 3 imagens por linha tanto no PC quanto no Celular */
-        /* 👑 CORREÇÃO: background-size: contain faz a foto do casal aparecer inteira e sem cortes */
+/* 👑 RECONSTRUTOR DA IMAGEM CAPA: Maior, Retangular e Estilo Banner */
 .capa-container { 
-            width: 100%; 
-            max-width: 650px; 
-            height: 380px; 
-            background-image: url('casal.jpeg'); 
-            background-size: contain; 
-            background-position: center; 
-            background-repeat: no-repeat; 
-            border-radius: 4px; 
-            /* 👑 SHADOW REMOVIDA: Sem relevo na imagem */
-            box-shadow: none !important; 
-            margin-bottom: 25px; 
-        }
-        
-        @media (max-width: 768px) { 
-            .capa-container { 
-                height: 240px; 
-            } 
-        }
+    width: 100%; 
+    max-width: 800px;         /* 📏 Aumentado de 650px para 800px para ficar maior */
+    height: 450px;            /* 📐 Proporção retangular perfeita para Computadores (Estilo 16:9 widescreen) */
+    background-image: url('casal.jpeg'); 
+    background-size: cover;   /* 🔥 Preenche todo o retângulo sem deixar barras brancas nas laterais */
+    background-position: center 35%; /* Centraliza o foco da foto (ajuste a porcentagem se precisar subir ou descer o rosto de vocês) */
+    background-repeat: no-repeat; 
+    border-radius: 8px;       /* Cantinhos levemente arredondados modernos */
+    box-shadow: none !important; 
+    margin-bottom: 35px; 
+}
+
+/* 📱 AJUSTE DA PROPORÇÃO RETANGULAR PARA O CELULAR */
+@media (max-width: 768px) { 
+    .capa-container { 
+        max-width: 100%;      /* Ocupa quase toda a largura da tela do celular */
+        height: 220px;        /* 📐 Altura retangular proporcional e linda para telas de smartphones */
+        background-position: center center;
+    } 
+}
+
 
         /* 👑 CORREÇÃO: Garante 3 colunas de imagens uma ao lado da outra e centraliza os elementos */
         .grid-presentes { 
