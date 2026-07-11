@@ -11,7 +11,17 @@
     <style>
         /* Design Minimalista Profissional */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #1a1a1a; text-align: center; line-height: 1.7; padding-bottom: 60px; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #ffffff; 
+            color: #1a1a1a; 
+            text-align: center; 
+            line-height: 1.7; 
+            padding-bottom: 60px; 
+            /* 👑 NOVA MOLDURA PRETA EM TODO O SITE */
+            border: 2px solid #000000 !important;
+            min-height: 100vh;
+        }
         header { padding: 60px 20px 20px 20px; display: flex; flex-direction: column; align-items: center; }
         
         /* Regra da Capa: Mostra a imagem do casal sem distorcer */
@@ -21,7 +31,7 @@
 
         /* 👑 GRID DO PRODUTO: Força 3 imagens por linha tanto no PC quanto no Celular */
         /* 👑 CORREÇÃO: background-size: contain faz a foto do casal aparecer inteira e sem cortes */
-        .capa-container { 
+.capa-container { 
             width: 100%; 
             max-width: 650px; 
             height: 380px; 
@@ -29,8 +39,12 @@
             background-size: contain; 
             background-position: center; 
             background-repeat: no-repeat; 
+            border-radius: 4px; 
+            /* 👑 SHADOW REMOVIDA: Sem relevo na imagem */
+            box-shadow: none !important; 
             margin-bottom: 25px; 
         }
+        
         @media (max-width: 768px) { 
             .capa-container { 
                 height: 240px; 
