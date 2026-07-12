@@ -120,35 +120,41 @@
         }
 
         /* 📦 CAIXAS EM DESTAQUE (Estilo Quadro Minimalista para os Blocos) */
-        .container-afetivo,
-        .container-instrucoes {
-            margin: 20px auto 35px auto !important; 
-            padding: 25px 20px !important; 
-            background-color: #fcfcfc !important; /* Fundo cinza clarinho sutil */
-            border: 1px solid #eeeeee !important; /* Borda fina e discreta */
-            border-radius: 6px !important;
-            max-width: 600px !important;          
-            width: 100% !important;
-            box-sizing: border-box !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-        }
+        /* 🎯 TÍTULO "Como funcionam os presentes?" (Livre na página) */
+.titulo-instrucoes {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500 !important;   
+    font-size: 1.15rem !important;  
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    margin-top: 40px !important;   /* Dá uma distância elegante do bloco anterior */
+    margin-bottom: 12px !important;
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+}
 
-        /* Títulos internos das Caixas de Destaque */
-        .titulo-instrucoes,
-        .titulo-afetivo-caixa {
-            font-family: 'Montserrat', sans-serif !important;
-            font-weight: 500 !important;   
-            font-size: 1.05rem !important;  
-            letter-spacing: 2px !important;
-            text-transform: uppercase !important;
-            margin-top: 0 !important;
-            margin-bottom: 15px !important;
-            text-align: center !important;
-            width: 100% !important;
-            display: block !important;
-        }
+/* 📝 PARÁGRAFO DE INSTRUÇÕES DO PIX (Livre na página e delicado) */
+.texto-instrucoes {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 300 !important;   
+    font-size: 0.88rem !important; 
+    color: #444444 !important;     
+    line-height: 1.6 !important;
+    max-width: 580px !important;   /* Segura a largura para o texto não espalhar torto */
+    margin: 0 auto 35px auto !important; /* Centralização absoluta cirúrgica */
+    padding: 0 10px !important;
+    text-align: center !important; 
+    display: block !important;
+    width: 100% !important;
+}
+
+/* 📱 Ajuste rápido para o celular não quebrar errado */
+@media (max-width: 768px) {
+    .titulo-instrucoes { font-size: 1.0rem !important; margin-top: 30px !important; }
+    .texto-instrucoes { font-size: 0.82rem !important; margin-bottom: 25px !important; }
+}
+
 
         .titulo-lista {
             font-family: 'Montserrat', sans-serif !important;
@@ -317,12 +323,11 @@
     </p>
     
     <!-- 📦 Caixa de Instruções dos Presentes -->
-    <div class="container-instrucoes">
-        <h3 class="titulo-instrucoes">Como funcionam os presentes?</h3>
-        <p class="texto-instrucoes">
-            Para nos ajudar a completar os detalhes do enxoval, a nossa lista foi convertida em PIX. Basta selecionar um dos itens simbólicos listados abaixo, clicar na opção "Presentear" e concluir a transferência direto no aplicativo do seu banco.
-        </p>
-    </div>
+<!-- Texto de instruções livre, sem o quadro cinza -->
+<h3 class="titulo-instrucoes">Como funcionam os presentes?</h3>
+<p class="texto-instrucoes">
+    Para nos ajudar a completar os detalhes do enxoval, a nossa lista foi convertida em PIX. Basta selecionar um dos itens simbólicos listados abaixo, clicar na opção "Presentear" e concluir a transferência direto no aplicativo do seu banco.
+</p>
 
     <!-- 🍽️ Caixa com o Texto do Prato Afetivo (Mesmo estilo visual elegante) -->
     <div class="container-afetivo">
