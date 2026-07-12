@@ -341,10 +341,34 @@
          justify-content: center;align-items: center;
          z-index: 1000;
      }
-     .modal-content { 
-         background-color: #ffffff; 
-         padding: 40px; 
-     }
+.modal-content {
+    background-color: #ffffff;
+    padding: 40px;
+    position: relative; /* 🚨 CRUCIAL: Mantém o "X" preso dentro da caixinha branca */
+    border-radius: 8px;
+}
+     /* ❌ POSICIONAMENTO DO BOTÃO DE FECHAR (X) */
+.modal .fechar, 
+.modal .close,
+.btn-fechar {
+    position: absolute !important;
+    top: 15px !important;    /* Distância do topo da caixinha branca */
+    right: 15px !important;  /* Joga o botão totalmente para o lado direito */
+    font-size: 1.5rem !important; /* Tamanho do X */
+    cursor: pointer !important;
+    color: #999999 !important;    /* Um cinza discreto */
+    transition: color 0.2s;
+    line-height: 1 !important;
+    background: none !important;
+    border: none !important;
+}
+
+/* Efeito ao passar o mouse por cima */
+.modal .fechar:hover, 
+.modal .close:hover,
+.btn-fechar:hover {
+    color: #000000 !important; /* Fica pretinho ao passar o mouse */
+}
 </style>  
     
 </head>
@@ -378,15 +402,14 @@
 
 <!-- 🍽️ Caixa com o Texto do Prato Afetivo -->
 <div class="container-afetivo">
-    <h3 class="titulo-afetivo-caixa">Um carinho especial para o nosso lar... 🍽️</h3>
+    <h3 class="titulo-afetivo-caixa">🏠 Um carinho especial para o nosso lar... 🍽️ </h3>
     <p class="texto-afetivo">
-        Além do mimo virtual, queremos levar uma lembrança física e afetiva de cada um de vocês para o nosso dia a dia.
+        Gostaríamos muito de levar uma recordação física de cada um de vocês para a nossa rotina.
     </p>
     <p class="texto-afetivo">
-        Por isso, pedimos gentilmente que no dia do evento você nos traga um prato de sua escolha...
+        Por isso, pedimos gentilmente que no dia do evento você nos traga um prato de sua escolha (seja ele raso, fundo ou de sobremesa), com o formato ou estampa que você quiser! Assim, toda vez que formos usar, vamos nos lembrar com carinho da pessoa especial que nos deu.
     </p>
 </div>
-
     
     <hr class="linha-divisoria">
 
