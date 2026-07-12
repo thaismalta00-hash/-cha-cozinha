@@ -301,9 +301,9 @@
     margin-bottom: 15px !important; 
 }
 
-/* ❌ CORREÇÃO CRUCIAL: ESCONDE O RASCUNHO DO PIX DO RODAPÉ DA TELA */
+/* Oculta o modal e o rascunho do PIX do fundo da tela */
 .modal, #pixModal {
-    display: none !important; /* 🔥 Sume com o texto vazado do fundo do site até o clique */
+    display: none !important; /* Esconde tudo */
     position: fixed !important;
     top: 0; left: 0; width: 100%; height: 100%;
     background-color: rgba(0,0,0,0.5) !important;
@@ -312,7 +312,7 @@
     z-index: 10000 !important;
 }
 
-/* Mantém o conteúdo do modal bonito e centralizado quando abrir */
+/* Deixa a caixinha branca bonita quando ela abrir flutuando */
 .modal-content {
     background-color: #ffffff !important;
     padding: 40px 30px !important;
@@ -320,8 +320,21 @@
     border-radius: 12px !important;
     max-width: 450px !important;
     width: 90% !important;
-    display: block !important;
 }
+
+/* Garante o "X" no canto direito superior */
+.btn-fechar {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    background: none !important;
+    border: none !important;
+    font-size: 1.6rem !important;
+    cursor: pointer !important;
+    color: #999999 !important;
+    line-height: 1 !important;
+}
+.btn-fechar:hover { color: #000000 !important; }
 
 /* =======================================================
    📱 AJUSTE EM 2 COLUNAS PERFEITAS PARA O CELULAR
@@ -487,25 +500,28 @@
     </div>
 </div>
 
-    <!-- Janela flutuante do PIX (Modal) -->
-    <div id="pixModal" class="modal">
-        <div class="modal-content">
-            <!-- ❌ Botão de fechar que vai para o canto superior direito com o CSS que criamos -->
-            <button class="btn-fechar" onclick="fecharModal()">&times;</button>
-            
-            <!-- ✍️ Título do Modal com a fonte Montserrat e tamanho elegante -->
-            <h3 style="font-family: 'Montserrat', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; margin-bottom: 15px; margin-top: 10px;">Presentear com PIX</h3>
-                   
-            <!-- 🎯 Local onde o JavaScript injeta o nome do convidado e o valor do presente -->
-            <p id="modalMsg" style="font-family: 'Montserrat', sans-serif; color: #555555; margin-bottom: 20px; font-size: 0.9rem; text-align: center; line-height: 1.6;"></p>
-            
-            <!-- 📱 Chave PIX em destaque -->
-            <div class="pix-box" id="chavePixTexto" style="font-family: 'Montserrat', sans-serif; font-weight: 600; background-color: #f7f7f7; padding: 12px; border-radius: 4px; margin-bottom: 20px; letter-spacing: 1px;">11976861312</div>
-            
-            <!-- 📑 Botão de cópia automática -->
-            <button class="btn-comprar" onclick="copiarPix()" style="max-width: 250px; margin: 0 auto; display: block;">Copiar Chave PIX</button>
-        </div> <!-- 💎 CORREÇÃO: Fechamento da div modal-content adicionado aqui -->
-    </div> <!-- Fechamento da div pixModal -->
+<!-- 👑 CORREÇÃO: Adicionado o id="pixModal" e a classe class="modal" para sumir do rodapé -->
+<div id="pixModal" class="modal">
+    <div class="modal-content">
+        <!-- Botão X de fechar -->
+        <button class="btn-fechar" onclick="fecharModal()">&times;</button>
+        
+        <h3 style="font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; margin-bottom: 15px; margin-top: 10px;">Presentear com PIX</h3>
+        
+        <p class="texto-modal-afetivo">
+            Muito obrigado por fazer parte do nosso sonho! ❤️<br>
+            Para concluir o seu presente, basta copiar a nossa chave PIX abaixo e colar no aplicativo do seu banco.
+        </p>
+        
+        <!-- Local onde o JavaScript injeta o nome e valor do presente -->
+        <p id="modalMsg" style="font-family: 'Montserrat', sans-serif; color: #555555; margin-bottom: 20px; font-size: 0.9rem; text-align: center; line-height: 1.6;"></p>
+        
+        <div class="pix-box" id="chavePixTexto" style="font-family: 'Montserrat', sans-serif; font-weight: 600; background-color: #f7f7f7; padding: 12px; border-radius: 4px; margin-bottom: 20px; letter-spacing: 1px;">11976861312</div>
+        
+        <button class="btn-comprar" onclick="copiarPix()" style="max-width: 250px; margin: 0 auto; display: block;">Copiar Chave do Presente</button>
+    </div>
+</div>
+
 
             <script>
         const chavePixReal = "11976861312";
