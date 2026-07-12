@@ -226,37 +226,38 @@
 }
 
 /* =======================================================
-   👑 VITRINE DE PRESENTES SIMÉTRICA E ALINHADA (CLASSES REAIS)
+   👑 VITRINE DE PRESENTES SIMÉTRICA E ALINHADA
    ======================================================= */
 
-/* Alinha a grade de presentes no centro e com o espaçamento correto */
+/* Força a grade a ocupar o centro e preencher o espaço certo */
 .grid-presentes { 
     display: grid !important; 
     grid-template-columns: repeat(3, 1fr) !important; 
-    align-items: stretch !important; /* 🔥 Força todas as caixas a esticarem juntas na mesma altura */
+    align-items: stretch !important; /* 🔥 Força todas as caixas a esticarem juntas */
     gap: 20px !important; 
     margin: 30px auto 50px auto !important; 
     max-width: 1100px !important;
     width: 100% !important;
 }
 
-/* Força TODOS os cartões de produtos a terem exatamente o mesmo tamanho */
-.presente-card {
+/* Força TODOS os cartões a terem exatamente a mesma altura na linha */
+.card {
     background: #ffffff !important;
     border: 1px solid #e5e5e5 !important;
     display: flex !important;
     flex-direction: column !important; /* Cria uma fila vertical interna */
     text-align: left !important;
     transition: border-color 0.2s;
-    height: 100% !important; /* Faz o cartão usar toda a altura disponível da linha */
+    height: 100% !important; /* Faz o cartão usar toda a altura da linha */
     box-sizing: border-box !important;
 }
-.presente-card:hover { border-color: #000000 !important; }
+     
+.card:hover { border-color: #000000 !important; }
 
-/* Padroniza o tamanho das caixas das imagens para nenhuma foto empurrar o layout */
-.presente-img {
+/* Trava a área da imagem para nenhuma foto empurrar o texto */
+.card-img-container {
     width: 100% !important;
-    height: 220px !important; /* Altura fixa padrão no computador */
+    height: 220px !important; 
     overflow: hidden !important;
     border-bottom: 1px solid #e5e5e5 !important;
     background-color: #fafafa !important;
@@ -265,97 +266,70 @@
     align-items: center !important;
     justify-content: center !important;
 }
-.presente-img img { 
-    width: 100% !important; 
-    height: 100% !important; 
-    object-fit: contain !important; /* Impede a foto do presente de ser esmagada ou cortada */
-}
+.card-img-container img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
 
-/* Alinha as informações internas e empurra o botão para a base */
-.presente-info {
+/* Alinha as informações internas */
+.card-conteudo {
     padding: 20px !important;
     display: flex !important;
     flex-direction: column !important;
-    flex-grow: 1 !important; /* Faz o bloco preencher o espaço que sobrar no cartão */
-    justify-content: space-between !important; /* 🎯 Cola o botão sempre no rodapé do card, na mesma linha */
+    flex-grow: 1 !important; /* Faz o bloco de texto preencher o cartão */
+    justify-content: space-between !important; /* 🔥 Empurra o botão sempre para a base */
 }
-
-/* Resolve o problema de títulos com 1 ou 2 linhas */
-.presente-info h3 {
+     
+/* Resolve títulos de 1 ou 2 linhas (Evita que o preço suba) */
+.card h3 {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 0.85rem !important;
-    margin-top: 0 !important;
     margin-bottom: 8px !important;
     font-weight: 500 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
-    min-height: 44px !important; /* 🚨 Reserva o espaço invisível de 2 linhas para nomes curtos */
+    min-height: 44px !important; /* Reserva espaço para 2 linhas */
     display: flex !important;
     align-items: center !important;
 }
 
-.presente-info .preco { 
-    font-family: 'Montserrat', sans-serif !important; 
-    font-size: 1.05rem !important; 
-    font-weight: 600 !important; 
-    margin-bottom: 15px !important; 
-}
-
-/* Oculta o modal e o rascunho do PIX do fundo da tela */
-.modal, #pixModal {
-    display: none !important; /* Esconde tudo */
-    position: fixed !important;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5) !important;
-    justify-content: center !important;
-    align-items: center !important;
-    z-index: 10000 !important;
-}
-
-/* Deixa a caixinha branca bonita quando ela abrir flutuando */
-.modal-content {
-    background-color: #ffffff !important;
-    padding: 40px 30px !important;
-    position: relative !important;
-    border-radius: 12px !important;
-    max-width: 450px !important;
-    width: 90% !important;
-}
-
-/* Garante o "X" no canto direito superior */
-.btn-fechar {
-    position: absolute !important;
-    top: 15px !important;
-    right: 15px !important;
-    background: none !important;
-    border: none !important;
-    font-size: 1.6rem !important;
-    cursor: pointer !important;
-    color: #999999 !important;
-    line-height: 1 !important;
-}
-.btn-fechar:hover { color: #000000 !important; }
+.card .preco { font-family: 'Montserrat', sans-serif !important; font-size: 1.05rem !important; font-weight: 600 !important; margin-bottom: 15px !important; }
+     
+        .btn-comprar {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #000000;
+            padding: 12px 15px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-comprar:hover { background-color: #ffffff; color: #000000; }
+        .card.comprado { opacity: 0.3; }
+        .card.comprado .btn-comprar {
+            background-color: #ffffff !important;
+            color: #999999 !important;
+            border-color: #e5e5e5 !important;
+            cursor: not-allowed;
+        }
 
 /* =======================================================
-   📱 AJUSTE EM 2 COLUNAS PERFEITAS PARA O CELULAR
+   📱 AJUSTE CIRÚRGICO EM 2 COLUNAS PARA O CELULAR
    ======================================================= */
 @media (max-width: 768px) {
     .grid-presentes {
-        grid-template-columns: repeat(2, 1fr) !important; /* Transforma em 2 itens por linha */
+        grid-template-columns: repeat(2, 1fr) !important; 
         align-items: stretch !important;
         gap: 12px !important;
         padding: 0 5px !important;
     }
-    .presente-img { 
-        height: 130px !important; /* Altura ideal para a caixinha da foto no smartphone */
-        padding: 8px !important; 
-    }
-    .presente-info { padding: 12px 8px !important; }
-    .presente-info h3 { font-size: 0.72rem !important; min-height: 38px !important; } 
-    .presente-info .preco { font-size: 0.82rem !important; margin-bottom: 8px !important; }
+    .card-img-container { height: 130px !important; padding: 8px !important; }
+    .card-conteudo { padding: 12px 8px !important; }
+    .card h3 { font-size: 0.72rem !important; min-height: 38px !important; } /* Ajuste fino do título no celular */
+    .card .preco { font-size: 0.82rem !important; margin-bottom: 8px !important; }
     .btn-comprar { padding: 10px 4px !important; font-size: 0.65rem !important; }
 }
-
      
 
         /* ==========================================
@@ -500,28 +474,25 @@
     </div>
 </div>
 
-<!-- 👑 CORREÇÃO: Adicionado o id="pixModal" e a classe class="modal" para sumir do rodapé -->
-<div id="pixModal" class="modal">
-    <div class="modal-content">
-        <!-- Botão X de fechar -->
-        <button class="btn-fechar" onclick="fecharModal()">&times;</button>
-        
-        <h3 style="font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; margin-bottom: 15px; margin-top: 10px;">Presentear com PIX</h3>
-        
-        <p class="texto-modal-afetivo">
-            Muito obrigado por fazer parte do nosso sonho! ❤️<br>
-            Para concluir o seu presente, basta copiar a nossa chave PIX abaixo e colar no aplicativo do seu banco.
-        </p>
-        
-        <!-- Local onde o JavaScript injeta o nome e valor do presente -->
-        <p id="modalMsg" style="font-family: 'Montserrat', sans-serif; color: #555555; margin-bottom: 20px; font-size: 0.9rem; text-align: center; line-height: 1.6;"></p>
-        
-        <div class="pix-box" id="chavePixTexto" style="font-family: 'Montserrat', sans-serif; font-weight: 600; background-color: #f7f7f7; padding: 12px; border-radius: 4px; margin-bottom: 20px; letter-spacing: 1px;">11976861312</div>
-        
-        <button class="btn-comprar" onclick="copiarPix()" style="max-width: 250px; margin: 0 auto; display: block;">Copiar Chave do Presente</button>
-    </div>
-</div>
-
+    <!-- Janela flutuante do PIX (Modal) -->
+    <div id="pixModal" class="modal">
+        <div class="modal-content">
+            <!-- ❌ Botão de fechar que vai para o canto superior direito com o CSS que criamos -->
+            <button class="btn-fechar" onclick="fecharModal()">&times;</button>
+            
+            <!-- ✍️ Título do Modal com a fonte Montserrat e tamanho elegante -->
+            <h3 style="font-family: 'Montserrat', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; margin-bottom: 15px; margin-top: 10px;">Presentear com PIX</h3>
+                   
+            <!-- 🎯 Local onde o JavaScript injeta o nome do convidado e o valor do presente -->
+            <p id="modalMsg" style="font-family: 'Montserrat', sans-serif; color: #555555; margin-bottom: 20px; font-size: 0.9rem; text-align: center; line-height: 1.6;"></p>
+            
+            <!-- 📱 Chave PIX em destaque -->
+            <div class="pix-box" id="chavePixTexto" style="font-family: 'Montserrat', sans-serif; font-weight: 600; background-color: #f7f7f7; padding: 12px; border-radius: 4px; margin-bottom: 20px; letter-spacing: 1px;">11976861312</div>
+            
+            <!-- 📑 Botão de cópia automática -->
+            <button class="btn-comprar" onclick="copiarPix()" style="max-width: 250px; margin: 0 auto; display: block;">Copiar Chave PIX</button>
+        </div> <!-- 💎 CORREÇÃO: Fechamento da div modal-content adicionado aqui -->
+    </div> <!-- Fechamento da div pixModal -->
 
             <script>
         const chavePixReal = "11976861312";
