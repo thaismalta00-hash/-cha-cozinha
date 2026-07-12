@@ -9,7 +9,26 @@
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
 <link href="https://googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
- <style>   
+ <style> 
+     /* 👑 LINHA PRETA SÓLIDA PARA SEPARAR SEÇÕES */
+.linha-preta {
+    border: 0 !important;
+    border-top: 2px solid #000000 !important; /* Linha preta sólida (mude para 1px se quiser mais fina) */
+    width: 100% !important;
+    max-width: 250px !important;              /* Largura da linha na tela */
+    margin: 40px auto !important;              /* Cria espaço acima e abaixo, e centraliza */
+    display: block !important;
+    opacity: 1 !important;                     /* Garante que o preto fique 100% forte */
+}
+
+/* Ajuste de distância no celular */
+@media (max-width: 768px) {
+    .linha-preta {
+        margin: 30px auto !important;          /* Diminui o espaço nas telas menores */
+        max-width: 150px !important;           /* Deixa ela um pouco mais curta no celular */
+    }
+}
+
      
 /* 👑 LINHA PONTILHADA DE TRANSIÇÃO (Para colocar antes da mensagem "Montar o nosso novo lar") */
 .linha-transicao {
@@ -225,80 +244,79 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important; 
 }
 
-        /* ==========================================
-           5. LISTA DE PRESENTES (2 COLUNAS NO CELULAR)
-           ========================================== */
-        .grid-presentes { 
-            display: grid !important; 
-            grid-template-columns: repeat(3, 1fr) !important; 
-            gap: 20px !important; 
-            margin: 0 auto 40px auto; 
-            max-width: 1100px;
-            width: 100%;
-        }
+/* =======================================================
+   👑 VITRINE DE PRESENTES SIMÉTRICA E ALINHADA
+   ======================================================= */
 
-/* 1. Garante que todos os cartões tenham a mesma altura na linha */
-.card {
-    background: #ffffff;
-    border: 1px solid #e5e5e5;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    transition: border-color 0.2s;
-    
-    /* 🚨 TRUQUE RE-ALINHADOR: Força a caixa a esticar até o tamanho da maior */
-    height: 100% !important; 
+/* Força a grade a ocupar o centro e preencher o espaço certo */
+.grid-presentes { 
+    display: grid !important; 
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 20px !important; 
+    margin: 30px auto 50px auto !important; 
+    max-width: 1100px !important;
+    width: 100% !important;
+    text-align: center !important; /* Anula o desalinhamento lateral */
 }
-        .card:hover { border-color: #000000; }
 
-/* 2. Corrige a área das imagens dos produtos */
+/* Força TODOS os cartões a terem exatamente a mesma altura na linha */
+.card {
+    background: #ffffff !important;
+    border: 1px solid #e5e5e5 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: left !important;
+    transition: border-color 0.2s;
+    height: 100% !important; /* 🚨 TRUQUE: Faz todas as caixas ficarem do mesmo tamanho */
+    box-sizing: border-box !important;
+}
+.card:hover { border-color: #000000 !important; }
+
+/* Trava a área da imagem para nenhuma foto empurrar o texto */
 .card-img-container {
     width: 100% !important;
-    height: 220px !important;       /* Altura fixa para o computador */
+    height: 220px !important; /* Altura fixa padrão no computador */
     overflow: hidden !important;
     border-bottom: 1px solid #e5e5e5 !important;
     background-color: #fafafa !important;
-    padding: 15px;
+    padding: 15px !important;
     display: flex !important;
-    align-items: center !important;   /* Centraliza fotos verticais ou horizontais */
+    align-items: center !important;
     justify-content: center !important;
 }
-     
 .card-img-container img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: contain !important; /* Mantém a proporção da foto do produto sem esticar */
+    object-fit: contain !important; /* Protege a foto do presente contra distorções */
 }
 
-/* 3. Ajusta o espaço do texto para preencher o cartão proporcionalmente */
+/* Alinha as informações internas */
 .card-conteudo {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    /* 🎯 Alinha o botão sempre colado na base do cartão, na mesma altura horizontal */
-    justify-content: space-between !important; 
-}
-     
-/* 4. Resolve o problema de títulos com 1 ou 2 linhas */
-.card h3 {
-    font-size: 0.85rem;
-    margin-bottom: 8px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    
-    /* 🚨 TRUQUE DO TÍTULO: Cria uma altura mínima fixa para que títulos de 
-       apenas 1 linha reservem o espaço da segunda linha, evitando desalinhamentos */
-    min-height: 44px !important; 
+    padding: 20px !important;
     display: flex !important;
-    align-items: center !important; /* Mantém o texto centralizado na caixinha dele */
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    justify-content: space-between !important; /* 🎯 Empurra o botão sempre para a base, na mesma linha */
 }
      
+/* Resolve títulos de 1 ou 2 linhas (Evita que o preço suba) */
+.card h3 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 8px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    min-height: 44px !important; /* 🚨 Reserva o espaço de duas linhas mesmo para títulos curtos */
+    display: flex !important;
+    align-items: center !important;
+}
+
 .card .preco {
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 12px;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 15px !important;
 }
         .btn-comprar {
             background-color: #000000;
@@ -322,40 +340,23 @@
             cursor: not-allowed;
         }
 
-     /* =======================================================
-   📱 AJUSTE EXCLUSIVO DE COLUNAS PARA CELULARES
+/* =======================================================
+   📱 AJUSTE CIRÚRGICO EM 2 COLUNAS PARA O CELULAR
    ======================================================= */
 @media (max-width: 768px) {
     .grid-presentes {
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 10px !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Força 2 itens por linha */
+        gap: 12px !important;
+        padding: 0 5px !important;
     }
-    
-    /* Ajusta a proporção das caixas de imagem na tela menor do celular */
     .card-img-container { 
-        height: 130px !important; 
+        height: 130px !important; /* Altura perfeita para a foto no celular */
         padding: 8px !important; 
     }
-    
-    .card-conteudo { 
-        padding: 12px 8px !important; 
-    }
-    
-    /* Garante o alinhamento dos títulos curtos e longos também no celular */
-    .card h3 { 
-        font-size: 0.7rem !important; 
-        min-height: 36px !important; 
-    }
-    
-    .card .preco { 
-        font-size: 0.8rem !important; 
-        margin-bottom: 8px !important; 
-    }
-    
-    .btn-comprar { 
-        padding: 10px 4px !important; 
-        font-size: 0.65rem !important; 
-    }
+    .card-conteudo { padding: 12px 8px !important; }
+    .card h3 { font-size: 0.7rem !important; min-height: 36px !important; }
+    .card .preco { font-size: 0.8rem !important; margin-bottom: 8px !important; }
+    .btn-comprar { padding: 10px 4px !important; font-size: 0.65rem !important; }
 }
      
 
@@ -488,18 +489,18 @@
     </p>
 </div>
     
-   <hr class="linha-transicao">
+   <hr class="linha-preta">
 
     <!-- Título que divide a introdução da lista de presentes -->
     <h2 class="titulo-lista">Lista de Presentes:</h2>
-</div>
+</div> <!-- Fechamento da div de cima -->
 
-
-    <div class="container">
-        <div class="grid-presentes" id="vitrine-principal">
-            <!-- Os cards de presentes serão desenhados aqui pelo JavaScript -->
-        </div>
+<!-- 👑 SUA ESTRUTURA ATUAL REAJUSTADA (Adicionamos a classe grid-presentes ali) -->
+<div class="container">
+    <div class="grid-presentes" id="vitrine-principal">
+        <!-- Os cards de presentes serão desenhados aqui pelo JavaScript -->
     </div>
+</div>
 
     <!-- Janela flutuante do PIX (Modal) -->
     <div id="pixModal" class="modal">
