@@ -237,53 +237,69 @@
             width: 100%;
         }
 
-        .card {
-            background: #ffffff;
-            border: 1px solid #e5e5e5;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            transition: border-color 0.2s;
-        }
+/* 1. Garante que todos os cartões tenham a mesma altura na linha */
+.card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: border-color 0.2s;
+    
+    /* 🚨 TRUQUE RE-ALINHADOR: Força a caixa a esticar até o tamanho da maior */
+    height: 100% !important; 
+}
         .card:hover { border-color: #000000; }
 
-        .card-img-container {
-            width: 100% !important;
-            height: 240px;
-            overflow: hidden !important;
-            border-bottom: 1px solid #e5e5e5 !important;
-            background-color: #fafafa !important;
-            padding: 15px;
-        }
-        .card-img-container img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: contain !important;
-        }
+/* 2. Corrige a área das imagens dos produtos */
+.card-img-container {
+    width: 100% !important;
+    height: 220px !important;       /* Altura fixa para o computador */
+    overflow: hidden !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    background-color: #fafafa !important;
+    padding: 15px;
+    display: flex !important;
+    align-items: center !important;   /* Centraliza fotos verticais ou horizontais */
+    justify-content: center !important;
+}
+     
+.card-img-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important; /* Mantém a proporção da foto do produto sem esticar */
+}
 
-        .card-conteudo {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-        .card h3 {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-        }
-        .card .preco {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
+/* 3. Ajusta o espaço do texto para preencher o cartão proporcionalmente */
+.card-conteudo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* 🎯 Alinha o botão sempre colado na base do cartão, na mesma altura horizontal */
+    justify-content: space-between !important; 
+}
+     
+/* 4. Resolve o problema de títulos com 1 ou 2 linhas */
+.card h3 {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* 🚨 TRUQUE DO TÍTULO: Cria uma altura mínima fixa para que títulos de 
+       apenas 1 linha reservem o espaço da segunda linha, evitando desalinhamentos */
+    min-height: 44px !important; 
+    display: flex !important;
+    align-items: center !important; /* Mantém o texto centralizado na caixinha dele */
+}
+     
+.card .preco {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
         .btn-comprar {
             background-color: #000000;
             color: #ffffff;
@@ -305,6 +321,43 @@
             border-color: #e5e5e5 !important;
             cursor: not-allowed;
         }
+
+     /* =======================================================
+   📱 AJUSTE EXCLUSIVO DE COLUNAS PARA CELULARES
+   ======================================================= */
+@media (max-width: 768px) {
+    .grid-presentes {
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 10px !important;
+    }
+    
+    /* Ajusta a proporção das caixas de imagem na tela menor do celular */
+    .card-img-container { 
+        height: 130px !important; 
+        padding: 8px !important; 
+    }
+    
+    .card-conteudo { 
+        padding: 12px 8px !important; 
+    }
+    
+    /* Garante o alinhamento dos títulos curtos e longos também no celular */
+    .card h3 { 
+        font-size: 0.7rem !important; 
+        min-height: 36px !important; 
+    }
+    
+    .card .preco { 
+        font-size: 0.8rem !important; 
+        margin-bottom: 8px !important; 
+    }
+    
+    .btn-comprar { 
+        padding: 10px 4px !important; 
+        font-size: 0.65rem !important; 
+    }
+}
+     
 
         /* ==========================================
            6. RESPONSIVIDADE E CELULARES (PERFEITAMENTE RETO)
