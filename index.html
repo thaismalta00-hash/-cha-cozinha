@@ -456,12 +456,7 @@
             
             <!-- ✍️ Título do Modal com a fonte Montserrat e tamanho elegante -->
             <h3 style="font-family: 'Montserrat', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; margin-bottom: 15px; margin-top: 10px;">Presentear com PIX</h3>
-            
-            <!-- ❤️ Sua mensagem carinhosa com o estilo delicado -->
-            <p class="texto-modal-afetivo">
-                Muito obrigado por fazer parte do nosso sonho! <br>
-                Para concluir o seu presente, basta copiar a nossa chave PIX abaixo e colar no aplicativo do seu banco. ❤️
-            </p>        
+                   
             <!-- 🎯 Local onde o JavaScript injeta o nome do convidado e o valor do presente -->
             <p id="modalMsg" style="font-family: 'Montserrat', sans-serif; color: #555555; margin-bottom: 20px; font-size: 0.9rem; text-align: center; line-height: 1.6;"></p>
             
@@ -472,7 +467,6 @@
             <button class="btn-comprar" onclick="copiarPix()" style="max-width: 250px; margin: 0 auto; display: block;">Copiar Chave PIX</button>
         </div> <!-- 💎 CORREÇÃO: Fechamento da div modal-content adicionado aqui -->
     </div> <!-- Fechamento da div pixModal -->
-
 
             <script>
         const chavePixReal = "11976861312";
@@ -543,8 +537,8 @@ function iniciarVitrine() {
 
                 let valorFormatado = valorFinal.toFixed(2).replace('.', ',');
                 
-                let mensagem = "Obrigado, <b>" + nomeConvidado + "</b>!<br><br>";
-                mensagem += "Por favor, faça o pagamento de <b>R$ " + valorFormatado + "</b> no seu banco utilizando a nossa chave PIX abaixo.";
+                let mensagem = "Obrigado(a), <b>" + nomeConvidado + "</b>, por fazer parte do nosso sonho! ❤️ <br><br>";
+                mensagem += "Para concluir o seu presente <b>R$ " + valorFormatado + "</b>, basta copiar a nossa chave PIX abaixo e colar no aplicativo do seu banco.";
                 
                 document.getElementById('modalMsg').innerHTML = mensagem;
                 document.getElementById('pixModal').style.display = 'flex';
