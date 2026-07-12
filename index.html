@@ -10,6 +10,50 @@
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
 <link href="https://googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
  <style>   
+     
+     /* 👑 LINHA PRETA MINIMALISTA PARA SEPARAR SEÇÕES */
+.linha-divisoria {
+    border: 0 !important;
+    border-top: 1px solid #1a1a1a !important; /* Linha preta bem fininha de 1 pixel */
+    width: 100% !important;
+    max-width: 200px !important;              /* Largura da linha (mude para 100px se quiser ela menor e mais discreta) */
+    margin: 50px auto !important;              /* Cria 50px de espaço acima e abaixo da linha, e centraliza */
+    display: block !important;
+    opacity: 0.7 !important;                   /* Deixa o preto levemente suave e chique */
+}
+
+/* 📱 Ajuste de distância no celular para não ficar um espaço gigante */
+@media (max-width: 768px) {
+    .linha-divisoria {
+        margin: 35px auto !important;          /* Reduz o espaço no celular */
+        max-width: 120px !important;           /* Deixa ela um pouquinho menor em telas pequenas */
+    }
+}
+
+     /* 📦 QUADRO CINZA EXCLUSIVO */
+.container-afetivo {
+    margin: 30px auto 40px auto !important; 
+    padding: 25px 20px !important; 
+    background-color: #fcfcfc !important; /* Fundo cinza clarinho */
+    border: 1px solid #eeeeee !important; /* Borda discreta */
+    border-radius: 6px !important;
+    max-width: 600px !important;          
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+/* Título e Texto (Ajuste suas fontes/tamanhos aqui) */
+.titulo-afetivo-caixa { font-family: 'Montserrat', sans-serif !important; font-weight: 500 !important; font-size: 1.05rem !important; letter-spacing: 2px !important; text-transform: uppercase !important; text-align: center !important; }
+.texto-afetivo { font-family: 'Montserrat', sans-serif !important; font-weight: 300 !important; font-size: 0.88rem !important; color: #444444 !important; line-height: 1.6 !important; text-align: center !important; }
+
+/* 📱 Ajuste do quadro no celular */
+@media (max-width: 768px) {
+    .container-afetivo { padding: 20px 15px !important; }
+}
+
 { 
             box-sizing: border-box; 
             margin: 0; 
@@ -316,6 +360,9 @@
     <h3 class="subtitulo">Sejam Bem-vindos ao nosso site!</h3>
 </header>
 
+    <hr class="linha-divisoria">
+
+
 <div class="container">
     <!-- ✍️ Texto Inicial do Site (Fonte Montserrat leve e centralizada) -->
     <p class="bloco-intro">
@@ -329,17 +376,20 @@
     Para nos ajudar a completar os detalhes do enxoval, a nossa lista foi convertida em PIX. Basta selecionar um dos itens simbólicos listados abaixo, clicar na opção "Presentear" e concluir a transferência direto no aplicativo do seu banco.
 </p>
 
-    <!-- 🍽️ Caixa com o Texto do Prato Afetivo (Mesmo estilo visual elegante) -->
-    <div class="container-afetivo">
-        <h3 class="titulo-afetivo-caixa">Um carinho especial para o nosso lar... 🍽️</h3>
-        <p class="texto-afetivo">
-            Além do mimo virtual, queremos levar uma lembrança física e afetiva de cada um de vocês para o nosso dia a dia.
-        </p>
-        <p class="texto-afetivo">
-            Por isso, pedimos gentilmente que no dia do evento você nos traga um prato de sua escolha (seja ele raso, fundo ou de sobremesa), com o formato, cor ou estampa que você desejar. Assim, toda vez que formos usar, nos lembraremos com muito carinho da pessoa especial que nos presenteou.
-        </p>
-    </div>
+<!-- 🍽️ Caixa com o Texto do Prato Afetivo -->
+<div class="container-afetivo">
+    <h3 class="titulo-afetivo-caixa">Um carinho especial para o nosso lar... 🍽️</h3>
+    <p class="texto-afetivo">
+        Além do mimo virtual, queremos levar uma lembrança física e afetiva de cada um de vocês para o nosso dia a dia.
+    </p>
+    <p class="texto-afetivo">
+        Por isso, pedimos gentilmente que no dia do evento você nos traga um prato de sua escolha...
+    </p>
+</div>
+
     
+    <hr class="linha-divisoria">
+
     <!-- Título que divide a introdução da lista de presentes -->
     <h2 class="titulo-lista">Lista de Presentes:</h2>
 </div>
