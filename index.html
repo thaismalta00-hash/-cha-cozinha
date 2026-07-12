@@ -15,7 +15,7 @@
     border: 0 !important;
     border-top: 2px solid #000000 !important; /* Linha preta sólida (mude para 1px se quiser mais fina) */
     width: 100% !important;
-    max-width: 250px !important;              /* Largura da linha na tela */
+    max-width: 420px !important;              /* Largura da linha na tela */
     margin: 40px auto !important;              /* Cria espaço acima e abaixo, e centraliza */
     display: block !important;
     opacity: 1 !important;                     /* Garante que o preto fique 100% forte */
@@ -25,7 +25,7 @@
 @media (max-width: 768px) {
     .linha-preta {
         margin: 30px auto !important;          /* Diminui o espaço nas telas menores */
-        max-width: 150px !important;           /* Deixa ela um pouco mais curta no celular */
+        max-width: 420px !important;           /* Deixa ela um pouco mais curta no celular */
     }
 }
 
@@ -33,9 +33,9 @@
 /* 👑 LINHA PONTILHADA DE TRANSIÇÃO (Para colocar antes da mensagem "Montar o nosso novo lar") */
 .linha-transicao {
     border: 0 !important;
-    border-top: 1px dashed #cccccc !important; /* Linha pontilhada delicada */
+    border-top: 2px dashed #cccccc !important; /* Linha pontilhada delicada */
     width: 100% !important;
-    max-width: 120px !important;                /* Tamanho discreto centralizado */
+    max-width: 420px !important;                /* Tamanho discreto centralizado */
     margin: 40px auto !important;               /* Respiro elegante acima e abaixo */
     display: block !important;
     opacity: 0.6 !important;
@@ -45,7 +45,7 @@
 @media (max-width: 768px) {
     .linha-divisoria {
         margin: 35px auto !important;          /* Reduz o espaço no celular */
-        max-width: 120px !important;           /* Deixa ela um pouquinho menor em telas pequenas */
+        max-width: 420px !important;           /* Deixa ela um pouquinho menor em telas pequenas */
     }
 }
 
@@ -252,11 +252,11 @@
 .grid-presentes { 
     display: grid !important; 
     grid-template-columns: repeat(3, 1fr) !important; 
+    align-items: stretch !important; /* 🔥 Força todas as caixas a esticarem juntas */
     gap: 20px !important; 
     margin: 30px auto 50px auto !important; 
     max-width: 1100px !important;
     width: 100% !important;
-    text-align: center !important; /* Anula o desalinhamento lateral */
 }
 
 /* Força TODOS os cartões a terem exatamente a mesma altura na linha */
@@ -264,18 +264,19 @@
     background: #ffffff !important;
     border: 1px solid #e5e5e5 !important;
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: column !important; /* Cria uma fila vertical interna */
     text-align: left !important;
     transition: border-color 0.2s;
-    height: 100% !important; /* 🚨 TRUQUE: Faz todas as caixas ficarem do mesmo tamanho */
+    height: 100% !important; /* Faz o cartão usar toda a altura da linha */
     box-sizing: border-box !important;
 }
+     
 .card:hover { border-color: #000000 !important; }
 
 /* Trava a área da imagem para nenhuma foto empurrar o texto */
 .card-img-container {
     width: 100% !important;
-    height: 220px !important; /* Altura fixa padrão no computador */
+    height: 220px !important; 
     overflow: hidden !important;
     border-bottom: 1px solid #e5e5e5 !important;
     background-color: #fafafa !important;
@@ -284,19 +285,15 @@
     align-items: center !important;
     justify-content: center !important;
 }
-.card-img-container img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important; /* Protege a foto do presente contra distorções */
-}
+.card-img-container img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
 
 /* Alinha as informações internas */
 .card-conteudo {
     padding: 20px !important;
     display: flex !important;
     flex-direction: column !important;
-    flex-grow: 1 !important;
-    justify-content: space-between !important; /* 🎯 Empurra o botão sempre para a base, na mesma linha */
+    flex-grow: 1 !important; /* Faz o bloco de texto preencher o cartão */
+    justify-content: space-between !important; /* 🔥 Empurra o botão sempre para a base */
 }
      
 /* Resolve títulos de 1 ou 2 linhas (Evita que o preço suba) */
@@ -307,17 +304,13 @@
     font-weight: 500 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
-    min-height: 44px !important; /* 🚨 Reserva o espaço de duas linhas mesmo para títulos curtos */
+    min-height: 44px !important; /* Reserva espaço para 2 linhas */
     display: flex !important;
     align-items: center !important;
 }
 
-.card .preco {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 1.05rem !important;
-    font-weight: 600 !important;
-    margin-bottom: 15px !important;
-}
+.card .preco { font-family: 'Montserrat', sans-serif !important; font-size: 1.05rem !important; font-weight: 600 !important; margin-bottom: 15px !important; }
+     
         .btn-comprar {
             background-color: #000000;
             color: #ffffff;
@@ -345,17 +338,15 @@
    ======================================================= */
 @media (max-width: 768px) {
     .grid-presentes {
-        grid-template-columns: repeat(2, 1fr) !important; /* Força 2 itens por linha */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        align-items: stretch !important;
         gap: 12px !important;
         padding: 0 5px !important;
     }
-    .card-img-container { 
-        height: 130px !important; /* Altura perfeita para a foto no celular */
-        padding: 8px !important; 
-    }
+    .card-img-container { height: 130px !important; padding: 8px !important; }
     .card-conteudo { padding: 12px 8px !important; }
-    .card h3 { font-size: 0.7rem !important; min-height: 36px !important; }
-    .card .preco { font-size: 0.8rem !important; margin-bottom: 8px !important; }
+    .card h3 { font-size: 0.72rem !important; min-height: 38px !important; } /* Ajuste fino do título no celular */
+    .card .preco { font-size: 0.82rem !important; margin-bottom: 8px !important; }
     .btn-comprar { padding: 10px 4px !important; font-size: 0.65rem !important; }
 }
      
@@ -550,28 +541,31 @@
         ];
 
 function iniciarVitrine() {
-            const containerPrincipal = document.getElementById('vitrine-principal');
-            containerPrincipal.innerHTML = '';
+    const containerPrincipal = document.getElementById('vitrine-principal');
+    containerPrincipal.innerHTML = '';
 
-            dadosPresentes.forEach(item => {
-                const card = document.createElement('div');
-                card.className = "card " + (item.comprado ? 'comprado' : '');
-                
-                let textoPreco = item.id === 20 ? "Valor Livre" : "R$ " + item.preco.toFixed(2).replace('.', ',');
+    dadosPresentes.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "card " + (item.comprado ? 'comprado' : '');
+        
+        let textoPreco = item.id === 20 ? "Valor Livre" : "R$ " + item.preco.toFixed(2).replace('.', ',');
 
-                let html = '<div class="card-img-container">';
-                html += '<img src="' + item.img + '" alt="' + item.nome + '">';
-                html += '</div>';
-                html += '<div class="card-conteudo"><div><h3>' + item.nome + '</h3>';
-                html += '<div class="preco">' + textoPreco + '</div></div>';
-                html += '<button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' ';
-                html += 'onclick="abrirFluxoCompra(' + item.id + ', \'' + item.nome.replace(/'/g, "\\'") + '\', ' + item.preco + ')">';
-                html += (item.comprado ? 'Esgotado' : 'Presentear') + '</button></div>';
-                
-                card.innerHTML = html;
-                containerPrincipal.appendChild(card);
-            });
-        }
+        // 🎯 CORREÇÃO: Removemos a div interna que quebrava o alinhamento vertical
+        let html = '<div class="card-img-container">';
+        html += '<img src="' + item.img + '" alt="' + item.nome + '">';
+        html += '</div>';
+        html += '<div class="card-conteudo">';
+        html += '<h3>' + item.nome + '</h3>'; // Sem a tag <div> extra antes do h3
+        html += '<div class="preco">' + textoPreco + '</div>';
+        html += '<button class="btn-comprar" ' + (item.comprado ? 'disabled' : '') + ' ';
+        html += 'onclick="abrirFluxoCompra(' + item.id + ', \'' + item.nome.replace(/'/g, "\\'") + '\', ' + item.preco + ')">';
+        html += (item.comprado ? 'Esgotado' : 'Presentear') + '</button></div>';
+        
+        card.innerHTML = html;
+        containerPrincipal.appendChild(card);
+    });
+}
+
 
         function abrirFluxoCompra(id, nome, preco) {
             let nomeConvidado = prompt("Você selecionou: " + nome + ".\nDigite seu nome completo para confirmar:");
