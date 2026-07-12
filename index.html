@@ -301,8 +301,8 @@
     margin-bottom: 15px !important; 
 }
 
-/* ❌ ESCONDE O RASCUNHO DO PIX DO RODAPÉ DA TELA */
-.modal {
+/* ❌ CORREÇÃO CRUCIAL: ESCONDE O RASCUNHO DO PIX DO RODAPÉ DA TELA */
+.modal, #pixModal {
     display: none !important; /* 🔥 Sume com o texto vazado do fundo do site até o clique */
     position: fixed !important;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -310,6 +310,17 @@
     justify-content: center !important;
     align-items: center !important;
     z-index: 10000 !important;
+}
+
+/* Mantém o conteúdo do modal bonito e centralizado quando abrir */
+.modal-content {
+    background-color: #ffffff !important;
+    padding: 40px 30px !important;
+    position: relative !important;
+    border-radius: 12px !important;
+    max-width: 450px !important;
+    width: 90% !important;
+    display: block !important;
 }
 
 /* =======================================================
@@ -331,6 +342,7 @@
     .presente-info .preco { font-size: 0.82rem !important; margin-bottom: 8px !important; }
     .btn-comprar { padding: 10px 4px !important; font-size: 0.65rem !important; }
 }
+
      
 
         /* ==========================================
