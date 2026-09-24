@@ -556,46 +556,35 @@ function abrirFluxoCompra(id, nome, preco) {
     
     if (nomeConvidado && nomeConvidado.trim() !== "") {
         const item = dadosPresentes.find(p => p.id === id);
-        let valorFinal = preco;
-
-        // Se for o porquinho de valor livre
-        //if (id === 20) {
-        //    let valorDigitado = prompt("Digite o valor em dinheiro (R$) que deseja enviar:");
-        //    if (!valorDigitado) return;
-        //    valorFinal = parseFloat(valorDigitado.replace(',', '.'));
-            
-        //   if (isNaN(valorFinal) || valorFinal <= 0) {
-        //      alert("Por favor, digite um valor válido para prosseguir.");
-        //        return;
-           }
-            // Para o valor livre, ele copia a chave celular normal
-            codigoPixParaCopiar = item.codigoPix; 
-        } else {
-            // Para presentes fixos, ele copia o código BR Code que você gerou no banco
-            codigoPixParaCopiar = item.codigoPix;
-        }
-
-        let valorFormatado = valorFinal.toFixed(2).replace('.', ',');
         
-        // Ajustamos as instruções do Modal para o formato Copia e Cola automático
+        // Define qual código será copiado (Chave celular se for id 20, ou Copia e Cola do banco para os outros)
+        codigoPixParaCopiar = item.codigoPix;
+
         let mensagem = "Muito obrigado(a), <b style='color:#1a1a1a; font-weight:600;'>" + nomeConvidado + "</b>, por fazer parte desse momento! ❤️<br><br>";
         mensagem += "<div style='text-align: left; background: #fcfcfc; padding: 15px; border-radius: 6px; border: 1px solid #eeeeee; font-size: 0.85rem; line-height: 1.6; color: #444;'>";
         mensagem += "<strong style='display: block; margin-bottom: 8px; color: #1a1a1a; font-weight: 500;'>Instruções rápidas:</strong>";
-        mensagem += "1. Clique no botão abaixo para copiar o <strong>Código Pix automático</strong>.<br>";
+        mensagem += "1. Clique no botão abaixo para copiar a nossa <strong>Chave PIX</strong>.<br>";
         mensagem += "2. Abra o aplicativo do seu banco e vá na opção <strong>PIX</strong>.<br>";
         
+        // Se for o porquinho de valor livre
         if (id === 20) {
-            mensagem += "3. Escolha transferir por chave de <strong>Celular</strong> e digite o valor escolhido.";
+            mensagem += "3. Escolha transferir por chave de <strong>Celular</strong>.<br>";
+            mensagem += "4. Insira o <strong>valor que o seu coração desejar</strong> para nos abençoar.";
+            mensagem += "</div>";
+            
             document.getElementById('chavePixTexto').innerText = "11976861312";
         } else {
+            // Se forem os presentes normais com valor automático
+            let valorFormatado = preco.toFixed(2).replace('.', ',');
             mensagem += "3. Procure e clique na opção <strong>Pix Copia e Cola</strong>.<br>";
             mensagem += "4. Cole o código. O valor de <strong>R$ " + valorFormatado + "</strong> aparecerá preenchido sozinho!";
-            // Mostra os primeiros caracteres do código grande com reticências para ficar bonito no layout
+            mensagem += "</div>";
+            
+            // Mostra o comecinho do BR Code com reticências para o design ficar perfeito
             document.getElementById('chavePixTexto').innerText = codigoPixParaCopiar.substring(0, 25) + "...";
         }
-        mensagem += "</div>";
         
-        document.getElementById('modalMsg').innerHTML = mensagem;
+        document.getElementById('modalMsg').innerHTML = message = mensagem;
         document.getElementById('pixModal').style.display = 'flex';
     }
 }
@@ -606,13 +595,14 @@ function fecharModal() {
 
 function copiarPix() {
     navigator.clipboard.writeText(codigoPixParaCopiar).then(() => {
-        alert("Código Pix copiado! Agora abra o app do seu banco e selecione 'Pix Copia e Cola' para concluir.");
+        alert("Código Pix copiado! Agora abra o app do seu banco para concluir.");
     }).catch(err => {
         alert("Erro ao copiar automaticamente. Por favor, tente novamente.");
     });
 }
 
 iniciarVitrine();
+
 </script>
 
 </body>
