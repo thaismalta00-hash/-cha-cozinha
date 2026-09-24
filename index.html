@@ -552,22 +552,22 @@ function iniciarVitrine() {
 }
 
 function abrirFluxoCompra(id, nome, preco) {
-    let nomeConvidado = prompt("Você selecionou o presente:\n• " + nome + "\n\nPor favor, digite seu nome completo para confirmar:");
+    let nomeConvidado = prompt("Você selecionou o presente:\n• " + nome + "\n\nPor favor, digite seu nome para confirmar:");
     
     if (nomeConvidado && nomeConvidado.trim() !== "") {
         const item = dadosPresentes.find(p => p.id === id);
         let valorFinal = preco;
 
         // Se for o porquinho de valor livre
-        if (id === 20) {
-            let valorDigitado = prompt("Digite o valor em dinheiro (R$) que deseja enviar:");
-            if (!valorDigitado) return;
-            valorFinal = parseFloat(valorDigitado.replace(',', '.'));
+        //if (id === 20) {
+        //    let valorDigitado = prompt("Digite o valor em dinheiro (R$) que deseja enviar:");
+        //    if (!valorDigitado) return;
+        //    valorFinal = parseFloat(valorDigitado.replace(',', '.'));
             
-            if (isNaN(valorFinal) || valorFinal <= 0) {
-                alert("Por favor, digite um valor válido para prosseguir.");
-                return;
-            }
+        //   if (isNaN(valorFinal) || valorFinal <= 0) {
+        //      alert("Por favor, digite um valor válido para prosseguir.");
+        //        return;
+           }
             // Para o valor livre, ele copia a chave celular normal
             codigoPixParaCopiar = item.codigoPix; 
         } else {
