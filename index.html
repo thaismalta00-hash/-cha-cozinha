@@ -317,7 +317,7 @@ h2, .titulo-cha {
 .card-img-container img { 
     width: 100% !important; 
     height: 100% !important; 
-    object-fit: cover !important; /* Faz a foto preencher o quadrado sem distorcer */
+    object-fit: contain !important; /* Faz a foto preencher o quadrado sem distorcer */
 }
 
 /* Alinha as informações internas */
@@ -422,6 +422,7 @@ h2, .titulo-cha {
          justify-content: center;align-items: center;
          z-index: 1000;
      }
+     
 /* Caixa branca do Modal */
 .modal-content { 
     background-color: #ffffff; 
