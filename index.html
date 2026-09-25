@@ -98,21 +98,22 @@
             align-items: center;
         }
 
-        /* ==========================================
-           2. TIPOGRAFIA DO TOPO (NOMES E SUBTÍTULOS)
-           ========================================== */
-        h2, .titulo-cha {
-            font-family: 'Montserrat', sans-serif !important;
-            font-weight: 300 !important;   /* Letra fina minimalista */
-            font-style: italic !important; 
-            font-size: 1.15rem !important;  
-            letter-spacing: 3px !important;/* Espaçamento moderno entre as letras */
-            margin-top: 25px !important;
-            margin-bottom: 8px !important;
-            text-transform: uppercase !important; /* Caixa alta elegante */
-            width: 100% !important;
-            text-align: center !important;
-        }
+/* ==========================================
+   2. TIPOGRAFIA DO TOPO UNIFICADA
+   ========================================== */
+h2, .titulo-cha {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400 !important;       /* Mesma espessura do subtítulo inferior */
+    font-style: normal !important;     /* Remove o deitado (itálico) e deixa em pé */
+    font-size: 0.85rem !important;     /* Diminuído para ter o mesmo tamanho discreto do subtítulo */
+    letter-spacing: 3px !important;    /* Mantém o espaçamento moderno entre letras */
+    margin-top: 25px !important;
+    margin-bottom: 8px !important;
+    text-transform: uppercase !important; /* Mantém em letras maiúsculas */
+    color: #2b2b2b !important;
+    width: 100% !important;
+    text-align: center !important;
+}
 
         /* ✍️ EXCLUSIVA: Único lugar com a fonte escrita à mão */
         h1, .nomes-noivos {
