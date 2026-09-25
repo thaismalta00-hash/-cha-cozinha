@@ -405,12 +405,32 @@ h2, .titulo-cha {
             .container-afetivo, .container-instrucoes { padding: 20px 15px !important; margin-bottom: 25px !important; }
             .titulo-instrucoes, .titulo-afetivo-caixa { font-size: 0.92rem !important; margin-bottom: 12px !important; }
             .titulo-lista { font-size: 1.05rem !important; margin: 35px 0}
-            .grid-presentes {grid-template-columns: repeat(2, 1fr) !important;gap: 10px !important;}
-            .card-img-container { height: 130px !important; padding: 6px !important; }
-            .card-conteudo { padding: 12px 8px !important; }
-            .card h3 { font-size: 0.7rem !important; min-height: 36px !important; }
-            .card .preco { font-size: 0.8rem !important; margin-bottom: 8px !important; }
-            .btn-comprar { padding: 10px 4px !important; font-size: 0.65rem !important; }
+            .grid-presentes {
+            grid-template-columns: repeat(2, 1fr) !important; 
+            gap: 16px !important;            /* Cria um corredor em branco perfeito no meio */
+            padding: 0 12px !important;       /* Afasta os cartões das bordas da tela */
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .card {
+            background: #ffffff !important;
+            border: 1px solid #e5e5e5 !important;
+            display: flex !important;
+            flex-direction: column !important; 
+            height: 100% !important; 
+            box-sizing: border-box !important;
+            border-radius: 6px !important;    /* Arredonda os cantos dos quadrados */
+        }
+        .card-img-container { 
+            height: 150px !important; 
+            background-color: #ffffff !important; 
+            padding: 0px !important; 
+        }
+        .card-conteudo { padding: 12px 8px !important; }
+        .card h3 { font-size: 0.68rem !important; min-height: 52px !important; text-align: center !important; } 
+        .card .preco { font-size: 0.82rem !important; margin-bottom: 8px !important; }
+        .btn-comprar { padding: 10px 4px !important; font-size: 0.65rem !important; }
+
         }
      /* Modal do PIX */
      .modal {
