@@ -308,13 +308,17 @@ h2, .titulo-cha {
     height: 220px !important; 
     overflow: hidden !important;
     border-bottom: 1px solid #e5e5e5 !important;
-    background-color: #fafafa !important;
-    padding: 15px !important;
+    background-color: #ffffff !important; /* Mudado para branco absoluto */
+    padding: 0px !important;              /* Remove o recuo para a foto preencher tudo */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
-.card-img-container img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
+.card-img-container img { 
+    width: 100% !important; 
+    height: 100% !important; 
+    object-fit: cover !important; /* Faz a foto preencher o quadrado sem distorcer */
+}
 
 /* Alinha as informações internas */
 .card-conteudo {
@@ -372,7 +376,7 @@ h2, .titulo-cha {
         gap: 12px !important;
         padding: 0 5px !important;
     }
-    .card-img-container { height: 130px !important; padding: 8px !important; }
+    .card-img-container { height: 150px !important; background-color: #ffffff !important; padding: 0px !important; }
     .card-conteudo { padding: 12px 8px !important; }
     .card h3 { font-size: 0.72rem !important; min-height: 38px !important; } /* Ajuste fino do título no celular */
     .card .preco { font-size: 0.82rem !important; margin-bottom: 8px !important; }
